@@ -1,0 +1,377 @@
+
+;;; Current state of the KB (10/2/2015 17:15.34, KM 2.5.33)
+
+(reset-kb)
+
+(disable-slot-checking)       ; (Temporarily disable while rebuilding KB state)
+                              ; (Will be restored to original value by final SETQ statements)
+
+(disable-classification)      ; (Temporarily disable while rebuilding KB state)
+                              ; (Will be restored to original value by final SETQ statements)
+
+(disable-installing-inverses) ; (Temporarily disable while rebuilding KB state)
+                              ; (Will be switched back on by (enable-installing-inverses) at the end)
+
+;;; ---------- TAXONOMY ----------
+
+
+;;; ---------- CONTENTS ----------
+
+(Alcohol has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Ash has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Betaine has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(Caffeine has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Calcium has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Carbohydrate has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Cholesterol has 
+  (instance-of (Mineral
+                Sterols)))
+
+;;; ----------
+
+(Choline has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(Copper has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Fat has 
+  (instance-of (Nutrition))
+  (instances (SaturatedFat
+              MonounsaturatedFat
+              PolyunsaturatedFat
+              TransFattyAcid
+              TransMonoenoicFattyAcid
+              TransPolyenoicFattyAcid
+              Omega3FattyAcid
+              Omega6FattyAcid)))
+
+;;; ----------
+
+(Fluoride has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Folate has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(Iron has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Magnesium has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Manganese has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Mineral has 
+  (instances (Iron
+              Magnesium
+              Phosphorus
+              Poassium
+              Sodium
+              Zinc
+              Copper
+              Manganese
+              Selenium
+              Fluoride
+              Cholesterol
+              Calcium))
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(MonounsaturatedFat has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(Niacin has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(Nutrition has 
+  (instances (Alcohol
+              Water
+              Ash
+              Caffeine
+              Theobromine
+              Protein
+              Vitamin
+              Mineral
+              Sterol
+              Carbohydrate
+              Fat)))
+
+;;; ----------
+
+(Omega3FattyAcid has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(Omega6FattyAcid has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(PantothenicAcid has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(Phosphorus has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Phytosterols has 
+  (instance-of (Sterols)))
+
+;;; ----------
+
+(Poassium has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(PolyunsaturatedFat has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(Protein has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Riboflavin has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(SaturatedFat has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(Selenium has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Sodium has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+(Sterol has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Sterols has 
+  (instances (Cholesterol
+              Phytosterols)))
+
+;;; ----------
+
+(Theobromine has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Thiamin has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(TransFattyAcid has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(TransMonoenoicFattyAcid has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(TransPolyenoicFattyAcid has 
+  (instance-of (Fat)))
+
+;;; ----------
+
+(Vitamin has 
+  (instances (VitaminA
+              VitaminC
+              VitaminD
+              VitaminE
+              VitaminK
+              Thiamin
+              Riboflavin
+              Niacin
+              VitaminB6
+              Folate
+              VitaminB12
+              PantothenicAcid
+              Choline
+              Betaine))
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(VitaminA has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(VitaminB12 has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(VitaminB6 has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(VitaminC has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(VitaminD has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(VitaminE has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(VitaminK has 
+  (instance-of (Vitamin)))
+
+;;; ----------
+
+(Water has 
+  (instance-of (Nutrition)))
+
+;;; ----------
+
+(Zinc has 
+  (instance-of (Mineral)))
+
+;;; ----------
+
+
+;;; ---------- EXPLANATIONS ----------
+
+;;; ----------------------------------------
+
+(enable-installing-inverses)  ; (Re-enable it after restoring KB state)
+
+;;; ----------------------------------------
+;;;	KM'S INTERNAL BEHAVIOR PARAMETER VALUES
+;;; ----------------------------------------
+
+(SETQ *RECURSIVE-CLASSIFICATION* 'T)
+(SETQ *INDIRECT-CLASSIFICATION* 'T)
+(SETQ *RECURSIVE-PROTOTYPES* 'NIL)
+(SETQ *EAGERLY-UNIFY-PROTOTYPES* 'T)
+(SETQ *SANITY-CHECKS* 'NIL)
+(SETQ *SLOT-CHECKING-ENABLED* 'NIL)
+(SETQ *LOGGING* 'NIL)
+(SETQ *MAX-PADDING-INSTANCES* '0)
+(SETQ *TOLERANCE* '1.e-4)
+(SETQ *OUTPUT-PRECISION* '3)
+(SETQ *INSTANCE-OF-IS-FLUENT* 'NIL)
+(SETQ *KM-DEPTH-LIMIT* 'NIL)
+(SETQ *LINEAR-PATHS* 'NIL)
+(SETQ *PROJECT-CACHED-VALUES-ONLY* 'NIL)
+(SETQ *RECORD-EXPLANATIONS-FOR-CLONES* 'T)
+(SETQ *COERCE-UNDECLARED-SLOTS* 'NIL)
+(SETQ *RECORD-EXPLANATIONS* 'T)
+(SETQ *RECORD-SOURCES* 'T)
+(SETQ *ADD-COMMENTS-TO-NAMES* 'T)
+(SETQ *CHECK-KB* 'NIL)
+(SETQ *CLASSIFY-SLOTLESS-INSTANCES* 'T)
+(SETQ *BUILT-IN-REMOVE-SUBSUMERS-SLOTS* '(|instance-of| |classes|
+                                          |superclasses| |member-type|))
+(SETQ *BUILT-IN-REMOVE-SUBSUMEES-SLOTS* '(|subclasses| |prototype-of| |domain|
+                                          |range|))
+(SETQ *DEFAULT-FLUENT-STATUS* '|*Fluent|)
+(SETQ *ACTIVE-OBJ-STACK* 'NIL)
+(SETQ *ON-ERROR* 'DEBUG)
+(SETQ *JUSTIFY-LEAVES* 'NIL)
+(SETQ *START-JUSTIFICATIONS-WITH-BECAUSE* 'T)
+(SETQ *CLASSIFICATION-ENABLED* 'T)
+(SETQ *PROTOTYPE-CLASSIFICATION-ENABLED* 'T)
+(SETQ *USE-INHERITANCE* 'T)
+(SETQ *USE-PROTOTYPES* 'T)
+(SETQ *DEVELOPER-MODE* 'NIL)
+(SETQ *UNCLONABLE-SLOTS* '(|prototype-participant-of| |prototype-participants|
+                           |prototype-of| |prototypes| |prototype-scope|
+                           |has-clones| |has-built-clones|))
+(SETQ *CALLED-FORCES-UNIFICATION* 'T)
+
+
+;;; ----------------------------------------
+;;;	KM'S INTERNAL STATE PARAMETER VALUES
+;;; ----------------------------------------
+
+(SETQ *KM-GENSYM-COUNTER* '3)
+(SETQ *VISIBLE-THEORIES* 'NIL)
+(SETQ *CURR-PROTOTYPE* 'NIL)
+(SETQ *CURR-SITUATION* '|*Global|)
+(SETQ *CLASSES-USING-ASSERTIONS-SLOT* 'NIL)
+(SETQ *ARE-SOME-DEFINITIONS* 'NIL)
+(SETQ *ARE-SOME-PROTOTYPE-DEFINITIONS* 'NIL)
+(SETQ *ARE-SOME-PROTOTYPES* 'NIL)
+(SETQ *ARE-SOME-SUBSLOTS* 'NIL)
+(SETQ *ARE-SOME-CONSTRAINTS* 'NIL)
+(SETQ *ARE-SOME-TAGS* 'NIL)
+(SETQ *ARE-SOME-DEFAULTS* 'NIL)
+(SETQ *AM-IN-SITUATIONS-MODE* 'NIL)
+
+;;; --- end (54 frames written) ---
+

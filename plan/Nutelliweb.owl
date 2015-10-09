@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#"
+     xml:base="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Ingredient -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Ingredient">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#NutritionPerDay -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#NutritionPerDay">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Nutrition"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#ServingSize -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#ServingSize">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Weight"/>
+                <owl:someValuesFrom rdf:resource="&xsd;anyURI"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Age -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Age">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Calorie -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Calorie"/>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#CaloriePerGram -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#CaloriePerGram">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Nutrition"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Female -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Female">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Gender"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Gender -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Gender">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Height -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Height">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Male -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Male">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Gender"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Volume -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Volume">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Weight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Weight">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#gram -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#gram">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#ml -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#ml">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Volume"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Food"/>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Nutrition -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Nutrition"/>
+    
+
+
+    <!-- http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sbw22/ontologies/2015/9/untitled-ontology-5#Person"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
