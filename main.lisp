@@ -1,12 +1,17 @@
 ;Load KM
-(loop for lib in '(
-   		   #P"lib/km-2-5-33.lisp"
-		   )
-   do (load lib))
+(load #P"lib/km-2-5-33.fasl") ; Load coompiled KM
+;(loop for lib in '(
+;   		   #P"lib/km-2-5-33.lisp"
+;		   )
+;   do (load lib))
+
+;(compile-file #P"lib/km-2-5-33.lisp")					;compile KM for faster process
+
 
 (ql:quickload :caveman2)
 
 ; This "Nutrition" KM is mal-modeled and needed to be replaced.
+;(untracekm) ;stop trace
 ;(km '(load-kb "kb/Nutrition.kb")) ;load a chemical nutrition kb
 
 ;Load and start web server
