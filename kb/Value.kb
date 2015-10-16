@@ -1,0 +1,21 @@
+
+;;; Value class
+
+(every Value has
+       (number ((a Number)))
+       (unit ((a Unit))))
+
+(WeightValue has
+	     (superclasses (Value))
+	     (unit ((a WeightUnit))))
+(HeightValue has
+	     (superclasses (Value))
+	     (unit ((a HeightUnit))))
+(VolumeValue has
+	     (superclasses (Value))
+	     (unit ((a ValueUnit))))
+(EnergyValue has
+	     (superclasses (Value))
+	     (unit ((a EnergyUnit))))
+
+(load-kb "kb/Unit.kb")

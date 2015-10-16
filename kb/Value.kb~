@@ -1,0 +1,153 @@
+
+;;; Value class
+
+(every Value has
+       (number ((a Number)))
+       (unit ((a Unit))))
+
+(WeightValue has
+	     (superclasses (Value))
+	     (unit ((a WeightUnit))))
+(HeightValue has
+	     (superclasses (Value))
+	     (unit ((a HeightUnit))))
+(VolumeValue has
+	     (superclasses (Value))
+	     (unit ((a ValueUnit))))
+(EnergyValue has
+	     (superclasses (Value))
+	     (unit ((a EnergyUnit))))
+
+;;; Unit class
+
+(every Unit has
+       (terms ("unit"))
+       (ratio ((a Number))))
+
+;; Height unit
+
+(*Meter has
+	(instance-of (HeightUnit))
+	(ratio (1))
+	(text ((:seq "m"))))
+(*CentiMeter has
+	    (instance-of (HeightUnit))
+	    (ratio (1/100))
+	    (text ((:seq "cm"))))
+(*MilliMeter has
+       (instance-of (HeightUnit))
+       (ratio (1/1000))
+       (text ((:seq "mm"))))
+(*Feet has
+       (instance-of (HeightUnit))
+       (ratio (0.3048))
+       (text ((:seq "ft"))))
+(*Yard has
+       (instance-of (HeightUnit))
+       (ratio ((the ratio of Feet)*3))
+       (text ((:seq "yd"))))
+(*Inch has
+       (instance-of (HeightUnit))
+       (ratio ((the ratio of Feet)/12))
+       (text ((:seq "in"))))
+
+;; Weight unit
+
+(*Gram has
+      (instance-of (WeighttUnit))
+      (ratio (1))
+      (text ((:seq "g"))))
+(*KiloGram has
+      (instance-of (WeighttUnit))
+      (ratio (1000))
+      (text ((:seq "kg"))))
+(*MilliGram has
+      (instance-of (WeighttUnit))
+      (ratio (1/1000))
+      (text ((:seq "mg"))))
+(*MicroGram has
+      (instance-of (WeighttUnit))
+      (ratio ((1/1000/1000)))
+      (text ((:seq "mcg"))))
+
+;; Volume unit
+
+(*MilliLiter has
+	    (instance-of (VolumeUnit))
+	    (ratio (1))
+	    (text ((:seq "ml"))))
+(*Liter has
+	    (instance-of (VolumeUnit))
+	    (ratio (1000))
+	    (text ((:seq "L"))))
+(*CubicMeter has
+	    (instance-of (VolumeUnit))
+	    (ratio ((the ratio of Liter)*1000))
+	    (text ((:seq "cm©ø"))))
+(*CubicInch has
+	    (instance-of (VolumeUnit))
+	    (ratio (0.0610237))
+	    (text ((:seq "in©ø"))))
+(*CubicFeet has
+	    (instance-of (VolumeUnit))
+	    (ratio ((the ratio of CubicInch)*1728))
+	    (text ((:seq "ft©ø"))))
+(*TeaSpoon has
+	    (instance-of (VolumeUnit))
+	    (ratio (4.92892))
+	    (text ((:seq "tsp"))))
+(*TableSpoon has
+	    (instance-of (VolumeUnit))
+	    (ratio ((the ratio of TeaSpoon)*3))
+	    (text ((:seq "tbsp"))))
+(*FluidOunce has
+	    (instance-of (VolumeUnit))
+	    (ratio ((the ratio of TableSpoon)*2))
+	    (text ((:seq "fl oz"))))
+(*Cup has
+	    (instance-of (VolumeUnit))
+	    (ratio (236.588))
+	    (text ((:seq "cup"))))
+(*Pint has
+	    (instance-of (VolumeUnit))
+	    (ratio (473.176))
+	    (text ((:seq "pint"))))
+(*Quart has
+	    (instance-of (VolumeUnit))
+	    (ratio ((the ratio of Pint)*2))
+	    (text ((:seq "quart"))))
+(*Gallon has
+	    (instance-of (VolumeUnit))
+	    (ratio ((the ratio of Quart)*4))
+	    (text ((:seq "gallon"))))
+
+;; Energy unit
+
+(*Joule has
+	    (instance-of (EnergyUnit))
+	    (ratio (1))
+	    (text ((:seq "J"))))
+(*ThermochemicalCalorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (4.184))
+	    (text ((:seq "calth"))))
+(*4C-Calorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (4.204))
+	    (text ((:seq "cal4"))))
+(*15C-Calorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (4.1855))
+	    (text ((:seq "cal15"))))
+(*20C-Calorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (4.182))
+	    (text ((:seq "cal20"))))
+(*MeanCalorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (4.190))
+	    (text ((:seq "cal"))))
+(*SteamTableCalorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (4.1868))
+	    (text ((:seq "calit"))))
