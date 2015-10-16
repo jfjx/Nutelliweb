@@ -2,7 +2,7 @@
 ;;; Value class
 
 (every Value has
-       (number ((a Number)))
+       (num ((a Number)))
        (unit ((a Unit))))
 
 (WeightValue has

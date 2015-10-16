@@ -1,7 +1,7 @@
 ;;; Nutrition Class
 
 (every Nutrition has 
-	(energyPerGram ((a EnergyValue with (number (0)) (unit (*Joule)))))
+	(energyPerGram ((a EnergyValue with (num (0)) (unit (*Joule)))))
 )
 
 ;;; -----------------------
@@ -10,7 +10,7 @@
 
 (every Alcohol has
 	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (number (29)) (unit (*Joule)))))
+	(energyPerGram ((a EnergyValue with (num (29)) (unit (*Joule)))))
 ) 
 	
 (every Water has
@@ -31,7 +31,7 @@
 	
 (every Protein has
 	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (number (17)) (unit (*Joule)))))
+	(energyPerGram ((a EnergyValue with (num (17)) (unit (*Joule)))))
 )
 
 (every Vitamin has
@@ -48,12 +48,12 @@
 	
 (every Carbohydrate has
 	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (number (17)) (unit (*Joule)))))
+	(energyPerGram ((a EnergyValue with (num (17)) (unit (*Joule)))))
 )
 	
 (every Fat has
 	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (number (37)) (unit (*Joule)))))
+	(energyPerGram ((a EnergyValue with (num (37)) (unit (*Joule)))))
 )
 
 
@@ -63,7 +63,7 @@
 
 (every DietaryFiber has
 	(superclasses (Carbohydrate))
-	(energyPerGram ((a EnergyValue with (number (8)) (unit (*Joule)))))
+	(energyPerGram ((a EnergyValue with (num (8)) (unit (*Joule)))))
 )
 
 
