@@ -1,0 +1,34 @@
+(every Food has
+       (terms ("food" "menu" "dish"))
+       (nutritions ((Nutrition)))
+       (servingSize ((WeightValue)))
+       (weight ((WeightValue)))
+       (ingredients (Food)) ; (ingredients ((a Food) (a Food) (a Food)))
+       (recipe (Seqence)))
+
+(nutritions has
+	    (instance-of (Slot))
+	    (domain (Food))
+	    (range (Nutrition))
+	    (cardinality (1-to-N)))
+(servingSize has
+	     (instance-of (Slot))
+	     (domain (Food))
+	     (range (weightValue))
+	     (cardinality (1-to-1)))
+(weight has
+	(instance-of (Slot))
+	(domain (Food))
+	(range (weightValue))
+	(cardinality (1-to-1)))
+
+(ingredients has
+	     (instance-of (Slot))
+	     (domain (Food))
+	     (range (Food))
+	     (cardinality (1-to-N)))
+(recipe has
+	(instance-of (Slot))
+	(domain (Food))
+	(range (Sequence))
+	(cardinality (1-to-1)))

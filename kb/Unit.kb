@@ -34,19 +34,19 @@
 ;; Weight unit
 
 (*Gram has
-      (instance-of (WeighttUnit))
+      (instance-of (WeightUnit))
       (ratio (1))
       (text ((:seq "g"))))
 (*KiloGram has
-      (instance-of (WeighttUnit))
+      (instance-of (WeightUnit))
       (ratio (1000))
       (text ((:seq "kg"))))
 (*MilliGram has
-      (instance-of (WeighttUnit))
+      (instance-of (WeightUnit))
       (ratio (1/1000))
       (text ((:seq "mg"))))
 (*MicroGram has
-      (instance-of (WeighttUnit))
+      (instance-of (WeightUnit))
       (ratio ((1/1000/1000)))
       (text ((:seq "mcg"))))
 
