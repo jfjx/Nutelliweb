@@ -1,377 +1,232 @@
+;;; Nutrition Class
+
+(every Nutrition has 
+	(energyPerGram ((a EnergyValue with (number (0)) (unit (*Joule)))))
+)
+
+;;; -----------------------
+;;; Subclasses of Nutrition
+;;; -----------------------
+
+(every Alcohol has
+	(superclasses (Nutrition))
+	(energyPerGram ((a EnergyValue with (number (29)) (unit (*Joule)))))
+) 
+	
+(every Water has
+	(superclasses (Nutrition))
+)
+	
+(every Ash has
+	(superclasses (Nutrition))
+)	
+
+(every Caffeine has
+	(superclasses (Nutrition))
+)
+	
+(every Theobromine has
+	(superclasses (Nutrition))
+)
+	
+(every Protein has
+	(superclasses (Nutrition))
+	(energyPerGram ((a EnergyValue with (number (17)) (unit (*Joule)))))
+)
+
+(every Vitamin has
+	(superclasses (Nutrition))
+)
+	
+(every Mineral has
+	(superclasses (Nutrition))
+)
+	
+(every Sterol has
+	(superclasses (Nutrition))
+)
+	
+(every Carbohydrate has
+	(superclasses (Nutrition))
+	(energyPerGram ((a EnergyValue with (number (17)) (unit (*Joule)))))
+)
+	
+(every Fat has
+	(superclasses (Nutrition))
+	(energyPerGram ((a EnergyValue with (number (37)) (unit (*Joule)))))
+)
+
+
+;;; ---------------------
+;;; Subclasses of Carbohydrate
+;;; ---------------------
+
+(every DietaryFiber has
+	(superclasses (Carbohydrate))
+	(energyPerGram ((a EnergyValue with (number (8)) (unit (*Joule)))))
+)
+
+
+;;; ---------------------
+;;; Subclasses of Vitamin
+;;; ---------------------
+
+(every VitaminA has
+	(superclasses (Vitamin))
+)
+
+(every VitaminC has
+	(superclasses (Vitamin))
+)
+
+(every VitaminD has
+	(superclasses (Vitamin))
+)
+
+(every VitaminE has
+	(superclasses (Vitamin))
+)
+
+(every VitaminK has
+	(superclasses (Vitamin))
+)
+
+(every Thiamin has
+	(superclasses (Vitamin))
+)
+
+(every Riboflavin has
+	(superclasses (Vitamin))
+)
+
+(every Niacin has
+	(superclasses (Vitamin))
+)
 
-;;; Current state of the KB (10/2/2015 17:15.34, KM 2.5.33)
+(every VitaminB6 has
+	(superclasses (Vitamin))
+)
 
-(reset-kb)
+(every Folate has
+	(superclasses (Vitamin))
+)
 
-(disable-slot-checking)       ; (Temporarily disable while rebuilding KB state)
-                              ; (Will be restored to original value by final SETQ statements)
+(every VitaminB12 has
+	(superclasses (Vitamin))
+)
 
-(disable-classification)      ; (Temporarily disable while rebuilding KB state)
-                              ; (Will be restored to original value by final SETQ statements)
+(every PantothenicAcid has
+	(superclasses (Vitamin))
+)
 
-(disable-installing-inverses) ; (Temporarily disable while rebuilding KB state)
-                              ; (Will be switched back on by (enable-installing-inverses) at the end)
+(every Choline has
+	(superclasses (Vitamin))
+)
 
-;;; ---------- TAXONOMY ----------
+(every Betaine has
+	(superclasses (Vitamin))
+)
 
 
-;;; ---------- CONTENTS ----------
+;;; ---------------------
+;;; Subclasses of Mineral
+;;; ---------------------
 
-(Alcohol has 
-  (instance-of (Nutrition)))
+(every Iron has
+	(superclasses (Mineral))
+)
 
-;;; ----------
+(every Magnesium has
+	(superclasses (Mineral))
+)
 
-(Ash has 
-  (instance-of (Nutrition)))
+(every Phosphorus has
+	(superclasses (Mineral))
+)
 
-;;; ----------
+(every Poassium has
+	(superclasses (Mineral))
+)
 
-(Betaine has 
-  (instance-of (Vitamin)))
+(every Sodium has
+	(superclasses (Mineral))
+)
 
-;;; ----------
+(every Zinc has
+	(superclasses (Mineral))
+)
 
-(Caffeine has 
-  (instance-of (Nutrition)))
+(every Copper has
+	(superclasses (Mineral))
+)
 
-;;; ----------
+(every Manganese has
+	(superclasses (Mineral))
+)
 
-(Calcium has 
-  (instance-of (Mineral)))
+(every Selenium has
+	(superclasses (Mineral))
+)
 
-;;; ----------
+(every Fluoride has
+	(superclasses (Mineral))
+)
 
-(Carbohydrate has 
-  (instance-of (Nutrition)))
+(every Cholesterol has
+	(superclasses (Mineral))
+)
 
-;;; ----------
+(every Calcium has
+	(superclasses (Mineral))
+)
 
-(Cholesterol has 
-  (instance-of (Mineral
-                Sterols)))
 
-;;; ----------
+;;; -----------------
+;;; Subclasses of Fat
+;;; -----------------
 
-(Choline has 
-  (instance-of (Vitamin)))
+(every SaturatedFat has
+	(superclasses (Fat))
+)
 
-;;; ----------
+(every MonounsaturatedFat has
+	(superclasses (Fat))
+)
 
-(Copper has 
-  (instance-of (Mineral)))
+(every PolyunsaturatedFat has
+	(superclasses (Fat))
+)
 
-;;; ----------
+(every TransFattyAcid has
+	(superclasses (Fat))
+)
 
-(Fat has 
-  (instance-of (Nutrition))
-  (instances (SaturatedFat
-              MonounsaturatedFat
-              PolyunsaturatedFat
-              TransFattyAcid
-              TransMonoenoicFattyAcid
-              TransPolyenoicFattyAcid
-              Omega3FattyAcid
-              Omega6FattyAcid)))
+(every TransMonoenoicFattyAcid has
+	(superclasses (Fat))
+)
 
-;;; ----------
+(every TransPolyenoicFattyAcid has
+	(superclasses (Fat))
+)
 
-(Fluoride has 
-  (instance-of (Mineral)))
+(every Omega3FattyAcid has
+	(superclasses (Fat))
+)
 
-;;; ----------
+(every Omega6FattyAcid has
+	(superclasses (Fat))
+)
 
-(Folate has 
-  (instance-of (Vitamin)))
+	
+;;; --------------------
+;;; Subclasses of Sterol
+;;; --------------------
 
-;;; ----------
+(every Cholesterol has
+	(superclasses (Sterol))
+)
 
-(Iron has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(Magnesium has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(Manganese has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(Mineral has 
-  (instances (Iron
-              Magnesium
-              Phosphorus
-              Poassium
-              Sodium
-              Zinc
-              Copper
-              Manganese
-              Selenium
-              Fluoride
-              Cholesterol
-              Calcium))
-  (instance-of (Nutrition)))
-
-;;; ----------
-
-(MonounsaturatedFat has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(Niacin has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(Nutrition has 
-  (instances (Alcohol
-              Water
-              Ash
-              Caffeine
-              Theobromine
-              Protein
-              Vitamin
-              Mineral
-              Sterol
-              Carbohydrate
-              Fat)))
-
-;;; ----------
-
-(Omega3FattyAcid has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(Omega6FattyAcid has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(PantothenicAcid has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(Phosphorus has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(Phytosterols has 
-  (instance-of (Sterols)))
-
-;;; ----------
-
-(Poassium has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(PolyunsaturatedFat has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(Protein has 
-  (instance-of (Nutrition)))
-
-;;; ----------
-
-(Riboflavin has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(SaturatedFat has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(Selenium has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(Sodium has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-(Sterol has 
-  (instance-of (Nutrition)))
-
-;;; ----------
-
-(Sterols has 
-  (instances (Cholesterol
-              Phytosterols)))
-
-;;; ----------
-
-(Theobromine has 
-  (instance-of (Nutrition)))
-
-;;; ----------
-
-(Thiamin has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(TransFattyAcid has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(TransMonoenoicFattyAcid has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(TransPolyenoicFattyAcid has 
-  (instance-of (Fat)))
-
-;;; ----------
-
-(Vitamin has 
-  (instances (VitaminA
-              VitaminC
-              VitaminD
-              VitaminE
-              VitaminK
-              Thiamin
-              Riboflavin
-              Niacin
-              VitaminB6
-              Folate
-              VitaminB12
-              PantothenicAcid
-              Choline
-              Betaine))
-  (instance-of (Nutrition)))
-
-;;; ----------
-
-(VitaminA has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(VitaminB12 has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(VitaminB6 has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(VitaminC has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(VitaminD has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(VitaminE has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(VitaminK has 
-  (instance-of (Vitamin)))
-
-;;; ----------
-
-(Water has 
-  (instance-of (Nutrition)))
-
-;;; ----------
-
-(Zinc has 
-  (instance-of (Mineral)))
-
-;;; ----------
-
-
-;;; ---------- EXPLANATIONS ----------
-
-;;; ----------------------------------------
-
-(enable-installing-inverses)  ; (Re-enable it after restoring KB state)
-
-;;; ----------------------------------------
-;;;	KM'S INTERNAL BEHAVIOR PARAMETER VALUES
-;;; ----------------------------------------
-
-(SETQ *RECURSIVE-CLASSIFICATION* 'T)
-(SETQ *INDIRECT-CLASSIFICATION* 'T)
-(SETQ *RECURSIVE-PROTOTYPES* 'NIL)
-(SETQ *EAGERLY-UNIFY-PROTOTYPES* 'T)
-(SETQ *SANITY-CHECKS* 'NIL)
-(SETQ *SLOT-CHECKING-ENABLED* 'NIL)
-(SETQ *LOGGING* 'NIL)
-(SETQ *MAX-PADDING-INSTANCES* '0)
-(SETQ *TOLERANCE* '1.e-4)
-(SETQ *OUTPUT-PRECISION* '3)
-(SETQ *INSTANCE-OF-IS-FLUENT* 'NIL)
-(SETQ *KM-DEPTH-LIMIT* 'NIL)
-(SETQ *LINEAR-PATHS* 'NIL)
-(SETQ *PROJECT-CACHED-VALUES-ONLY* 'NIL)
-(SETQ *RECORD-EXPLANATIONS-FOR-CLONES* 'T)
-(SETQ *COERCE-UNDECLARED-SLOTS* 'NIL)
-(SETQ *RECORD-EXPLANATIONS* 'T)
-(SETQ *RECORD-SOURCES* 'T)
-(SETQ *ADD-COMMENTS-TO-NAMES* 'T)
-(SETQ *CHECK-KB* 'NIL)
-(SETQ *CLASSIFY-SLOTLESS-INSTANCES* 'T)
-(SETQ *BUILT-IN-REMOVE-SUBSUMERS-SLOTS* '(|instance-of| |classes|
-                                          |superclasses| |member-type|))
-(SETQ *BUILT-IN-REMOVE-SUBSUMEES-SLOTS* '(|subclasses| |prototype-of| |domain|
-                                          |range|))
-(SETQ *DEFAULT-FLUENT-STATUS* '|*Fluent|)
-(SETQ *ACTIVE-OBJ-STACK* 'NIL)
-(SETQ *ON-ERROR* 'DEBUG)
-(SETQ *JUSTIFY-LEAVES* 'NIL)
-(SETQ *START-JUSTIFICATIONS-WITH-BECAUSE* 'T)
-(SETQ *CLASSIFICATION-ENABLED* 'T)
-(SETQ *PROTOTYPE-CLASSIFICATION-ENABLED* 'T)
-(SETQ *USE-INHERITANCE* 'T)
-(SETQ *USE-PROTOTYPES* 'T)
-(SETQ *DEVELOPER-MODE* 'NIL)
-(SETQ *UNCLONABLE-SLOTS* '(|prototype-participant-of| |prototype-participants|
-                           |prototype-of| |prototypes| |prototype-scope|
-                           |has-clones| |has-built-clones|))
-(SETQ *CALLED-FORCES-UNIFICATION* 'T)
-
-
-;;; ----------------------------------------
-;;;	KM'S INTERNAL STATE PARAMETER VALUES
-;;; ----------------------------------------
-
-(SETQ *KM-GENSYM-COUNTER* '3)
-(SETQ *VISIBLE-THEORIES* 'NIL)
-(SETQ *CURR-PROTOTYPE* 'NIL)
-(SETQ *CURR-SITUATION* '|*Global|)
-(SETQ *CLASSES-USING-ASSERTIONS-SLOT* 'NIL)
-(SETQ *ARE-SOME-DEFINITIONS* 'NIL)
-(SETQ *ARE-SOME-PROTOTYPE-DEFINITIONS* 'NIL)
-(SETQ *ARE-SOME-PROTOTYPES* 'NIL)
-(SETQ *ARE-SOME-SUBSLOTS* 'NIL)
-(SETQ *ARE-SOME-CONSTRAINTS* 'NIL)
-(SETQ *ARE-SOME-TAGS* 'NIL)
-(SETQ *ARE-SOME-DEFAULTS* 'NIL)
-(SETQ *AM-IN-SITUATIONS-MODE* 'NIL)
-
-;;; --- end (54 frames written) ---
+(every Phytosterol has
+	(superclasses (Sterol))
+)
 
