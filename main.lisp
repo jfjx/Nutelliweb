@@ -11,8 +11,9 @@
 (ql:quickload :caveman2)
 
 ; This "Nutrition" KM is mal-modeled and needed to be replaced.
-;(untracekm) ;stop trace
-;(km '(load-kb "kb/Nutrition.kb")) ;load a chemical nutrition kb
+					;(untracekm) ;stop trace
+(untracekm)
+(km '(load-kb "kb/Nutelliweb.kb")) ;load a chemical nutrition kb
 
 ;Load and start web server
 ;(caveman2:make-project #P"webapp" :name "nutelliweb") ;make a new skeleton
