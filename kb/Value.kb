@@ -3,7 +3,8 @@
 
 (every Value has
        (num ((a Number)))
-       (unit ((a Unit))))
+       (unit ((a Unit)))
+       (text ((:seq (the num of Self) (the text of (the unit of Self))))))
 
 (WeightValue has
 	     (superclasses (Value))

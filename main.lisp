@@ -13,7 +13,7 @@
 ; This "Nutrition" KM is mal-modeled and needed to be replaced.
 ;(untracekm) ;stop trace
 (untracekm)
-(km '(load-kb "kb/Nutelliweb.kb")) ;load a chemical nutrition kb
+(km '#$(load-kb "kb/Nutelliweb.kb")) ;load a chemical nutrition kb
 
 ;Load and start web server
 (asdf:operate 'asdf:load-op 'nutelliweb) ;load
