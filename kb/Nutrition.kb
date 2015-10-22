@@ -2,6 +2,7 @@
 
 (every Nutrition has 
 	(energyPerGram ((a EnergyValue with (num (0)) (unit (*Joule)))))
+	(weight ((a WeightValue with (num (0)) (unit (*Gram)))))
 )
 
 ;;; -----------------------
@@ -64,6 +65,14 @@
 (every DietaryFiber has
 	(superclasses (Carbohydrate))
 	(energyPerGram ((a EnergyValue with (num (8)) (unit (*Joule)))))
+)
+
+(every Starch has
+	(superclasses (Carbohydrate))
+)
+
+(every Sugars has
+	(superclasses (Carbohydrate))
 )
 
 

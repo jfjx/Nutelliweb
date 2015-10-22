@@ -1,0 +1,8 @@
+(load "lib/km-2-5-33.fasl")
+
+(untracekm)
+(km '(load-kb "kb/Nutelliweb.kb")) ;load a chemical nutrition kb
+
+(km0 '(*cake has
+       (instance-of (Food))
+       (with 

@@ -24,11 +24,11 @@
        (text ((:seq "ft"))))
 (*Yard has
        (instance-of (HeightUnit))
-       (ratio ((the ratio of Feet)*3))
+       (ratio (((the ratio of *Feet) * 3)))
        (text ((:seq "yd"))))
 (*Inch has
        (instance-of (HeightUnit))
-       (ratio ((the ratio of Feet)/12))
+       (ratio (((the ratio of *Feet) / 12)))
        (text ((:seq "in"))))
 
 ;; Weight unit
@@ -47,7 +47,7 @@
       (text ((:seq "mg"))))
 (*MicroGram has
       (instance-of (WeightUnit))
-      (ratio ((1/1000/1000)))
+      (ratio (((the ratio of *MilliGram) * 1000)))
       (text ((:seq "mcg"))))
 
 ;; Volume unit
@@ -62,7 +62,7 @@
 	    (text ((:seq "L"))))
 (*CubicMeter has
 	    (instance-of (VolumeUnit))
-	    (ratio ((the ratio of Liter)*1000))
+	    (ratio (((the ratio of Liter) * 1000)))
 	    (text ((:seq "cm©ø"))))
 (*CubicInch has
 	    (instance-of (VolumeUnit))
@@ -70,7 +70,7 @@
 	    (text ((:seq "in©ø"))))
 (*CubicFeet has
 	    (instance-of (VolumeUnit))
-	    (ratio ((the ratio of CubicInch)*1728))
+	    (ratio (((the ratio of CubicInch) * 1728)))
 	    (text ((:seq "ft©ø"))))
 (*TeaSpoon has
 	    (instance-of (VolumeUnit))
@@ -78,11 +78,11 @@
 	    (text ((:seq "tsp"))))
 (*TableSpoon has
 	    (instance-of (VolumeUnit))
-	    (ratio ((the ratio of TeaSpoon)*3))
+	    (ratio (((the ratio of TeaSpoon) * 3)))
 	    (text ((:seq "tbsp"))))
 (*FluidOunce has
 	    (instance-of (VolumeUnit))
-	    (ratio ((the ratio of TableSpoon)*2))
+	    (ratio ((the product of (:bag (the ratio of TableSpoon) 2))))
 	    (text ((:seq "fl oz"))))
 (*Cup has
 	    (instance-of (VolumeUnit))
@@ -94,11 +94,11 @@
 	    (text ((:seq "pint"))))
 (*Quart has
 	    (instance-of (VolumeUnit))
-	    (ratio ((the ratio of Pint)*2))
+	    (ratio (((the ratio of Pint) * 2)))
 	    (text ((:seq "quart"))))
 (*Gallon has
 	    (instance-of (VolumeUnit))
-	    (ratio ((the ratio of Quart)*4))
+	    (ratio (((the ratio of Quart) * 4)))
 	    (text ((:seq "gallon"))))
 
 ;; Energy unit
@@ -107,6 +107,18 @@
 	    (instance-of (EnergyUnit))
 	    (ratio (1))
 	    (text ((:seq "J"))))
+(*KiloJoule has
+	    (instance-of (EnergyUnit))
+	    (ratio (1000))
+	    (text ((:seq "kJ"))))
+(*Calorie has
+	    (instance-of (EnergyUnit))
+	    (ratio ((the ratio of *ThermochemicalCalorie)))
+	    (text ((the text of *ThermochemicalCalorie))))
+(*KiloCalorie has
+	    (instance-of (EnergyUnit))
+	    (ratio (((the ratio of *ThermochemicalCalorie) * 1000)))
+	    (text ((:seq "kcal"))))
 (*ThermochemicalCalorie has
 	    (instance-of (EnergyUnit))
 	    (ratio (4.184))
