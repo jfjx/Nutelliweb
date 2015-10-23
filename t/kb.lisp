@@ -18,4 +18,4 @@
 
 (print (km-unique0 '#$(make-sentence (:seq "a cake have cooked and it's total weight is " (the sum of (the bag of (the num of(the weight of (the nutritions of *cake))))) *Gram "nospace" "."))))
 
-(print (km-unique0 '#$(make-sentence (:seq "It's weight of" Sugars "is" (the text of (the weight of (the first of (the nutritions of *cake))))))
+(print (km-unique0 '#$(make-sentence (:seq "It's weight of" Sugars "is" (the text of (the weight of (the first of (the nutritions of *cake))))))))
