@@ -1,4 +1,5 @@
 (load-kb "kb/Value.kb")
+(load-kb "kb/Unit.kb")
 (load-kb "kb/Person.kb")
 (load-kb "kb/Food.kb")
 (load-kb "kb/Nutrition.kb")

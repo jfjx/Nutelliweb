@@ -18,5 +18,3 @@
 (EnergyValue has
 	     (superclasses (Value))
 	     (unit ((a EnergyUnit))))
-
-(load-kb "kb/Unit.kb")
