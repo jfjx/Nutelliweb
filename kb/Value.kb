@@ -2,19 +2,25 @@
 ;;; Value class
 
 (every Value has
-       (num ((a Number)))
-       (unit ((a Unit)))
-       (text ((:seq (the num of Self) "nospace" (the text of (the unit of Self))))))
+       (num ((must-be-a Number)))
+       (unit ((must-be-a Unit)))
+       (text ((:seq (the num of Self) "nospace" (the text of (the unit of Self)))))
+       (SIvalue (((the ratio of (the unit of Self)) * (the num of Self))))
+       )
 
 (WeightValue has
 	     (superclasses (Value))
-	     (unit ((a WeightUnit))))
+	     (unit ((a WeightUnit)))
+	     )
 (HeightValue has
 	     (superclasses (Value))
-	     (unit ((a HeightUnit))))
+	     (unit ((a HeightUnit)))
+	     )
 (VolumeValue has
 	     (superclasses (Value))
-	     (unit ((a ValueUnit))))
+	     (unit ((a VolumeUnit)))
+	     )
 (EnergyValue has
 	     (superclasses (Value))
-	     (unit ((a EnergyUnit))))
+	     (unit ((a EnergyUnit)))
+	     )

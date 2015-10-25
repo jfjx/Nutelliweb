@@ -1,0 +1,13 @@
+;;; Person class
+
+(every Person has
+       (terms ("person" "human" "Human"))
+       (gender ((must-be-a Gender)))
+       (age ((must-be-a Number)))
+       (weight ((must-be-a WeightValue)))
+       (height ((must-be-a HeightValue)))
+       (|daily taken calorie| ((a EnergyValue)))
+       (|daily needed calorie| ((a EnergyValue)))
+       (|daily taken nutritions| ((at-least 1 Nutrition)))
+       (|daily needed nutritions| ((at-least 1 Nutrition)))
+       )

@@ -1,0 +1,54 @@
+;;; Person class
+
+(every Person has
+       (terms ("person" "human" "Human"))
+       (gender ((must-be-a Gender)))
+       (age ((must-be-a Number)))
+       (weight ((must-be-a WeightValue)))
+       (height ((must-be-a HeightValue)))
+       (|daily taken food| ((at-least 1 Food))) ;Set
+       (|daily taken calorie| (
+       	       (the sum of
+	       	    (forall-bag
+		       	    (the bag of 
+	              	    	 (forall
+					(the nutritions of (the |daily taken food| of Self))
+	       		       	       	where ((0 < (the num of (the energyPerGram of It))))
+					It))
+				 (
+					(the SIvalue of (the energyPerGram of It))			     ; nutrition E/g to (J/g)
+					* (the SIvalue of (the weight of (the nutritions-of of It)))	     ; food weight to (g)
+				 	* (the SIvalue of (the weight of It))		     	       	     ; nutrition weight to (g)
+					/ (the SIvalue of (the servingSize of (the nutritions-of of It)))    ; food serving size to (g)
+				 	* (the ratio of *KiloCalorie)	    	 	       	  	     ; to (kcal)
+				 )
+			     )
+		       )
+		)
+	)
+       (|daily needed calorie| ((2600)))
+       (|daily taken nutritions| (
+       	       (the bag of (the nutritions of (the |daily taken food| of Self)))
+	       ))
+       (|daily needed nutritions| ((at-least 1 Nutrition)))
+       )
+
+(weight has
+	(instance-of (Slot))
+	(domain (Person Food))
+	(range (WeightValue))
+	(cardinality (1-to-1)))
+(height has
+	(instance-of (Slot))
+	(domain (Person))
+	(range (HeightValue))
+	(cardinality (1-to-1)))
+(gender has
+	(instance-of (Slot))
+	(domain (Person))
+	(range (Gender))
+	(cardinality (N-to-1)))
+(*Male has
+       (instance-of (Gender)))
+(*Female has
+	 (instance-of (Gender)))

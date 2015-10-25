@@ -4,6 +4,19 @@
 ;       (terms ("unit"))
        (ratio ((must-be-a Number))))
 
+(every HeightUnit has
+       (superclasses (Unit))
+       (SIunit ((*Meter))))
+(every WeightUnit has
+       (superclasses (Unit))
+       (SIunit ((*Gram))))
+(every VolumeUnit has
+       (superclasses (Unit))
+       (SIunit ((*MilliLiter))))
+(every EnergyUnit has
+       (superclasses (Unit))
+       (SIunit ((*Joule))))
+
 ;; Height unit
 
 (*Meter has
@@ -47,7 +60,7 @@
       (text ((:seq "mg"))))
 (*MicroGram has
       (instance-of (WeightUnit))
-      (ratio (((the ratio of *MilliGram) * 1000)))
+      (ratio (((the ratio of *MilliGram) / 1000)))
       (text ((:seq "mcg"))))
 
 ;; Volume unit
@@ -63,10 +76,10 @@
 (*CubicMeter has
 	    (instance-of (VolumeUnit))
 	    (ratio (((the ratio of Liter) * 1000)))
-	    (text ((:seq "cm©ø"))))
+	    (text ((:seq "m©ø"))))
 (*CubicInch has
 	    (instance-of (VolumeUnit))
-	    (ratio (0.0610237))
+	    (ratio (16.3871))
 	    (text ((:seq "in©ø"))))
 (*CubicFeet has
 	    (instance-of (VolumeUnit))
@@ -111,13 +124,13 @@
 	    (instance-of (EnergyUnit))
 	    (ratio (1000))
 	    (text ((:seq "kJ"))))
-(*Calorie has
+(*GramCalorie has
 	    (instance-of (EnergyUnit))
 	    (ratio ((the ratio of *ThermochemicalCalorie)))
 	    (text ((the text of *ThermochemicalCalorie))))
 (*KiloCalorie has
 	    (instance-of (EnergyUnit))
-	    (ratio (((the ratio of *ThermochemicalCalorie) * 1000)))
+	    (ratio (((the ratio of *GramCalorie) * 1000)))
 	    (text ((:seq "kcal"))))
 (*ThermochemicalCalorie has
 	    (instance-of (EnergyUnit))
