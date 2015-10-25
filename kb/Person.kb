@@ -2,13 +2,105 @@
 
 (every Person has
        (terms ("person" "human" "Human"))
-       (gender ((a Gender)))
-       (age ((a Number) (must-be-a Number)))
-       (weight ((a WeightValue)))
-       (height ((a HeightValue)))
+       (gender ((must-be-a Gender)))
+       (age ((must-be-a Number)))
+       (weight ((must-be-a WeightValue)))
+       (height ((must-be-a HeightValue)))
        (|daily taken calorie| ((a EnergyValue)))
        (|daily needed calorie| ((a EnergyValue)))
+       (|daily taken nutritions| ((at-least 1 Nutrition)))
+       (|daily needed nutritions| ((at-least 1 Nutrition)))
 )
+(every |0-5 months infant| has-definition
+       (instance-of (Person))
+       (age ((constraint ((TheValue > 0) and (TheValue < 0.5)))))
+       (|daily needed calorie| ((a EnergyValue with (num (550)) (unit (*KiloCalorie)))))
+       (|daily needed nutritions| (
+       	       (a Carbohydrate with (weight ((a WeightValue with (num (55)) (unit (*Gram))))))
+	       (a Fat with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
+	       (a Omega6FattyAcid with (weight ((a WeightValue with (num (2.0)) (unit (*Gram))))))
+       )))
+(every |6-11 months infant| has-definition
+       (instance-of (Person))
+       (age ((constraint ((TheValue >= 0.5) and (TheValue < 1))))))
+(every |1-2 years toddler| has-definition
+       (instance-of (Person))
+       (age ((constraint ((TheValue >= 1) and (TheValue < 3))))))
+
+(every |6-8 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 3) and (TheValue < 9))))))
+(every |9-11 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 9) and (TheValue < 12))))))
+(every |12-14 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 12) and (TheValue < 15))))))
+(every |15-18 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 15) and (TheValue < 19))))))
+(every |19-29 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 19) and (TheValue < 30))))))
+(every |30-49 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 30) and (TheValue < 50))))))
+(every |50-64 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 50) and (TheValue < 65))))))
+(every |65-74 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint ((TheValue >= 65) and (TheValue < 75))))))
+(every |75 years old male| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Male)))
+       (age ((constraint (TheValue >= 75)))))
+
+(every |6-8 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 6) and (TheValue < 9))))))
+(every |9-11 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 9) and (TheValue < 12))))))
+(every |12-14 years old female| has-definition
+       (instance-of (Person))
+       (gender ((TheValue = *Female)))
+       (age ((constraint ((TheValue >= 12) and (TheValue < 15))))))
+(every |15-18 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 15) and (TheValue < 19))))))
+(every |19-29 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 19) and (TheValue < 30))))))
+(every |30-49 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 30) and (TheValue < 50))))))
+(every |50-64 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 50) and (TheValue < 65))))))
+(every |65-74 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint ((TheValue >= 65) and (TheValue < 75))))))
+(every |75 years old female| has-definition
+       (instance-of (Person))
+       (gender ((constraint (TheValue = *Female))))
+       (age ((constraint (TheValue >= 75)))))
+
 (weight has
 	(instance-of (Slot))
 	(domain (Person Food))

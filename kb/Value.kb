@@ -4,7 +4,7 @@
 (every Value has
        (num ((a Number)))
        (unit ((a Unit)))
-       (text ((:seq (the num of Self) (the text of (the unit of Self))))))
+       (text ((:seq (the num of Self) "nospace" (the text of (the unit of Self))))))
 
 (WeightValue has
 	     (superclasses (Value))

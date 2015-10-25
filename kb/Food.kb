@@ -1,10 +1,10 @@
 (every Food has
        (terms ("food" "menu" "dish"))
-       (nutritions ((Nutrition)))
-       (servingSize ((WeightValue)))
-       (weight ((WeightValue)))
-       (ingredients (Food)) ; (ingredients ((a Food) (a Food) (a Food)))
-       (recipe (Seqence)))
+       (nutritions ((at-least 1 Nutrition)))
+       (servingSize ((must-be-a WeightValue)))
+       (weight ((must-be-a WeightValue)))
+       (ingredients ((at-least 1 Food)))
+       (recipe ((a Seqence))))
 
 (nutritions has
 	    (instance-of (Slot))

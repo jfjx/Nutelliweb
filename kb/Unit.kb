@@ -2,7 +2,7 @@
 
 (every Unit has
 ;       (terms ("unit"))
-       (ratio ((a Number))))
+       (ratio ((must-be-a Number))))
 
 ;; Height unit
 
