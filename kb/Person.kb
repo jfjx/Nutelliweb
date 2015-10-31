@@ -15,28 +15,33 @@
 					(the nutritions of (the |daily taken food| of Self))
 	       		       	       	where ((0 < (the num of (the energyPerGram of It))))
 					It))
-				 (
-					(the SIvalue of (the energyPerGram of It))			     ; nutrition E/g to (J/g)
-					* (the SIvalue of (the weight of (the nutritions-of of It)))	     ; food weight to (g)
-				 	* (the SIvalue of (the weight of It))		     	       	     ; nutrition weight to (g)
-					/ (the SIvalue of (the servingSize of (the nutritions-of of It)))    ; food serving size to (g)
-				 	/ (the ratio of *KiloCalorie)	    	 	       	  	     ; (J) to (kcal) ;;; not multiplying when converting from SI
-				 )
-			     )
-		       )
+			    ((the SIvalue of (the energyPerGram of It))				     ; nutrition E/g to (J/g)
+				* (the SIvalue of (the weight of (the nutritions-of of It)))	     ; food weight to (g)
+				* (the SIvalue of (the weight of It))		     	       	     ; nutrition weight to (g)
+				/ (the SIvalue of (the servingSize of (the nutritions-of of It)))    ; food serving size to (g)
+				/ (the ratio of *KiloCalorie))	    	 	       	  	     ; (J) to (kcal)
+			)
 		)
-	)
-       (|daily needed calorie| ((2600)))
+	))
+       (|daily needed calorie| (((the SIvalue of (the |daily needed calorie seed| of Self)) + (((if ((the fatness of Self) = *Obese) then -500 else (if ((the fatness of Self) = *Muchover) then -250 else (if ((the fatness of Self) = *Under) then 500 else 0))) * (the ratio of *KiloCalorie))))))
+       
+       (BMI ((((the SIvalue of (the weight of Self)) / (the ratio of *KiloGram)) / (the SIvalue of (the height of Self)) ^ 2)))
+       (fatness ((if ((the BMI of Self) >= 35) then *Obese else
+       		 (if ((the BMI of Self) >= 30) then *Muchover else
+		 (if ((the BMI of Self) >= 25) then *Moreover else
+		 (if ((the BMI of Self) >= 23) then *Over else
+		 (if ((the BMI of Self) >= 18.5) then *Normal else *Under)))))))
        (|daily taken nutritions| (
        	       (the bag of (the nutritions of (the |daily taken food| of Self)))
 	       ))
-       (|daily needed nutritions| ((at-least 1 Nutrition)))
+;       (|daily needed nutritions| ((at-least 1 Nutrition)))
        )
 
 (every |0-5 months infant| has-definition
        (instance-of (Person))
-       (age ((constraint ((TheValue > 0) and (TheValue < 0.5)))))
-       (|daily needed calorie| ((a EnergyValue with (num (550)) (unit (*KiloCalorie)))))
+       (age ((constraint ((TheValue >= 0) and (TheValue < 0.5))))))
+(every |0-5 months infant| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (550)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
        	       (a Carbohydrate with (weight ((a WeightValue with (num (55)) (unit (*Gram))))))
 	       (a Fat with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -70,8 +75,9 @@
        )))
 (every |6-11 months infant| has-definition
        (instance-of (Person))
-       (age ((constraint ((TheValue >= 0.5) and (TheValue < 1)))))
-       (|daily needed calorie| ((a EnergyValue with (num (700)) (unit (*KiloCalorie)))))
+       (age ((constraint ((TheValue >= 0.5) and (TheValue < 1))))))
+(every |6-11 months infant| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (700)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
        	       (a Carbohydrate with (weight ((a WeightValue with (num (90)) (unit (*Gram))))))
 	       (a Fat with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -105,8 +111,9 @@
        )))
 (every |1-2 years toddler| has-definition
        (instance-of (Person))
-       (age ((constraint ((TheValue >= 1) and (TheValue < 3)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1000)) (unit (*KiloCalorie)))))
+       (age ((constraint ((TheValue >= 1) and (TheValue < 3))))))
+(every |1-2 years toddler| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1000)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (15)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (10)) (unit (*Gram))))))
@@ -137,8 +144,9 @@
        )))
 (every |3-5 years toddler| has-definition
        (instance-of (Person))
-       (age ((constraint ((TheValue >= 3) and (TheValue < 6)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1400)) (unit (*KiloCalorie)))))
+       (age ((constraint ((TheValue >= 3) and (TheValue < 6))))))
+(every |3-5 years toddler| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1400)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (15)) (unit (*Gram))))))
@@ -169,9 +177,10 @@
        )))
 (every |6-8 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 6) and (TheValue < 9)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1600)) (unit (*KiloCalorie)))))
+       (gender ((*Male)))
+       (age ((constraint ((TheValue >= 6) and (TheValue < 9))))))
+(every |6-8 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1600)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -202,9 +211,10 @@
        )))
 (every |9-11 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 9) and (TheValue < 12)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1900)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 9) and (TheValue < 12))))))
+(every |9-11 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1900)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (35)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -235,9 +245,10 @@
        )))
 (every |12-14 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 12) and (TheValue < 15)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2400)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 12) and (TheValue < 15))))))
+(every |12-14 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2400)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (50)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -268,9 +279,10 @@
        )))
 (every |15-18 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 15) and (TheValue < 19)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2700)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 15) and (TheValue < 19))))))
+(every |15-18 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2700)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (55)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -301,9 +313,10 @@
        )))
 (every |19-29 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 19) and (TheValue < 30)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2600)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 19) and (TheValue < 30))))))
+(every |19-29 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2600)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (55)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -334,9 +347,10 @@
        )))
 (every |30-49 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 30) and (TheValue < 50)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2400)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 30) and (TheValue < 50))))))
+(every |30-49 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2400)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (55)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -367,9 +381,10 @@
        )))
 (every |50-64 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 50) and (TheValue < 65)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2200)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 50) and (TheValue < 65))))))
+(every |50-64 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2200)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (50)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -400,9 +415,10 @@
        )))
 (every |65-74 years old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint ((TheValue >= 65) and (TheValue < 75)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint ((TheValue >= 65) and (TheValue < 75))))))
+(every |65-74 years old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (50)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -433,9 +449,10 @@
        )))
 (every |75 years or more old male| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Male)))
-       (age ((constraint (TheValue >= 75))))
-       (|daily needed calorie| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
+       (gender (*Male))
+       (age ((constraint (TheValue >= 75)))))
+(every |75 years or more old male| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (50)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
@@ -466,9 +483,10 @@
        )))
 (every |6-8 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 6) and (TheValue < 9)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1500)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 6) and (TheValue < 9))))))
+(every |6-8 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1500)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (25)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (15)) (unit (*Gram))))))
@@ -499,9 +517,10 @@
        )))
 (every |9-11 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 9) and (TheValue < 12)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1700)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 9) and (TheValue < 12))))))
+(every |9-11 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1700)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (35)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (15)) (unit (*Gram))))))
@@ -532,9 +551,10 @@
        )))
 (every |12-14 years old female| has-definition
        (instance-of (Person))
-       (gender ((TheValue = *Female)))
-       (age ((constraint ((TheValue >= 12) and (TheValue < 15)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 12) and (TheValue < 15))))))
+(every |12-14 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (45)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -565,9 +585,10 @@
        )))
 (every |15-18 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 15) and (TheValue < 19)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 15) and (TheValue < 19))))))
+(every |15-18 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2000)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (45)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -598,9 +619,10 @@
        )))
 (every |19-29 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 19) and (TheValue < 30)))))
-       (|daily needed calorie| ((a EnergyValue with (num (2100)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 19) and (TheValue < 30))))))
+(every |19-29 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (2100)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (50)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -631,9 +653,10 @@
        )))
 (every |30-49 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 30) and (TheValue < 50)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1900)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 30) and (TheValue < 50))))))
+(every |30-49 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1900)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (45)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -664,9 +687,10 @@
        )))
 (every |50-64 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 50) and (TheValue < 65)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1800)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 50) and (TheValue < 65))))))
+(every |50-64 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1800)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (45)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -697,9 +721,10 @@
        )))
 (every |65-74 years old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint ((TheValue >= 65) and (TheValue < 75)))))
-       (|daily needed calorie| ((a EnergyValue with (num (1600)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint ((TheValue >= 65) and (TheValue < 75))))))
+(every |65-74 years old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1600)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (45)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))
@@ -730,9 +755,10 @@
        )))
 (every |75 years or more old female| has-definition
        (instance-of (Person))
-       (gender ((constraint (TheValue = *Female))))
-       (age ((constraint (TheValue >= 75))))
-       (|daily needed calorie| ((a EnergyValue with (num (1600)) (unit (*KiloCalorie)))))
+       (gender (*Female))
+       (age ((constraint (TheValue >= 75)))))
+(every |75 years or more old female| has
+       (|daily needed calorie seed| ((a EnergyValue with (num (1600)) (unit (*KiloCalorie)))))
        (|daily needed nutritions| (
                (a Protein with (weight ((a WeightValue with (num (45)) (unit (*Gram))))))
                (a DietaryFiber with (weight ((a WeightValue with (num (20)) (unit (*Gram))))))

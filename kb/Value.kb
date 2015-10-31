@@ -1,5 +1,9 @@
+#|
+Value class
 
-;;; Value class
+SIvalue slot converts any unit value to SI unit Number.
+SIvalue-made number needs to be divided with any other ratio to be converted to the unit.
+|#
 
 (every Value has
        (num ((must-be-a Number)))

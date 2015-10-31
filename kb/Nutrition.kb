@@ -143,6 +143,10 @@
 ;;; Subclasses of Mineral
 ;;; ---------------------
 
+(Calcium has
+	(superclasses (Mineral))
+)
+
 (Iron has
 	(superclasses (Mineral))
 )
@@ -182,15 +186,6 @@
 (Fluoride has
 	(superclasses (Mineral))
 )
-
-(Cholesterol has
-	(superclasses (Mineral))
-)
-
-(Calcium has
-	(superclasses (Mineral))
-)
-
 
 ;;; -----------------
 ;;; Subclasses of Fat

@@ -1,5 +1,6 @@
-;;; Unit class
-
+#|  Unit class
+SIunit slot needs to be set as float to make it able to be  converted to float, not X/Y, on division.
+|#
 (every Unit has
 ;       (terms ("unit"))
        (ratio ((must-be-a Number))))
@@ -21,15 +22,15 @@
 
 (*Meter has
 	(instance-of (HeightUnit))
-	(ratio (1))
+	(ratio (1.0))
 	(text ((:seq "m"))))
 (*CentiMeter has
 	    (instance-of (HeightUnit))
-	    (ratio (1/100))
+	    (ratio ((1.0 / 100)))
 	    (text ((:seq "cm"))))
 (*MilliMeter has
        (instance-of (HeightUnit))
-       (ratio (1/1000))
+       (ratio ((1.0 / 1000)))
        (text ((:seq "mm"))))
 (*Feet has
        (instance-of (HeightUnit))
@@ -48,15 +49,15 @@
 
 (*Gram has
       (instance-of (WeightUnit))
-      (ratio (1))
+      (ratio (1.0))
       (text ((:seq "g"))))
 (*KiloGram has
       (instance-of (WeightUnit))
-      (ratio (1000))
+      (ratio (1000.0))
       (text ((:seq "kg"))))
 (*MilliGram has
       (instance-of (WeightUnit))
-      (ratio (1/1000))
+      (ratio ((1.0 / 1000)))
       (text ((:seq "mg"))))
 (*MicroGram has
       (instance-of (WeightUnit))
@@ -67,11 +68,11 @@
 
 (*MilliLiter has
 	    (instance-of (VolumeUnit))
-	    (ratio (1))
+	    (ratio (1.0))
 	    (text ((:seq "ml"))))
 (*Liter has
 	    (instance-of (VolumeUnit))
-	    (ratio (1000))
+	    (ratio (1000.0))
 	    (text ((:seq "L"))))
 (*CubicMeter has
 	    (instance-of (VolumeUnit))
@@ -118,11 +119,11 @@
 
 (*Joule has
 	    (instance-of (EnergyUnit))
-	    (ratio (1))
+	    (ratio (1.0))
 	    (text ((:seq "J"))))
 (*KiloJoule has
 	    (instance-of (EnergyUnit))
-	    (ratio (1000))
+	    (ratio (1000.0))
 	    (text ((:seq "kJ"))))
 (*GramCalorie has
 	    (instance-of (EnergyUnit))
