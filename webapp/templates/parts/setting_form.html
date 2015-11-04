@@ -1,0 +1,22 @@
+<form action="{% block setting_form_action %}{% endblock %}" method="post">
+	<dl class="dl-horizontal">
+		<dt>Name</dt>
+		<dd><input name="person[name]" type="text" value="{{ person.name }}"></dd>
+		
+		<dt>Gender</dt>
+		<dd>
+			 <input type="radio" name="person[gender]" value="male" {% ifequal person.gender "male" %}checked{% endifequal %}>Male
+			 <input type="radio" name="person[gender]" value="female" {% ifequal person.gender "female" %}checked{% endifequal %}>Female
+		</dd>
+		
+		<dt>Age</dt>
+		<dd><input name="person[age]" type="text" value="{{ person.age }}"></dd>
+		
+		<dt>Weight</dt>
+		<dd><input name="person[weight]" type="text" value="{{ person.weight }}"></dd>
+		
+		<dt>Height</dt>
+		<dd><input name="person[height]" type="text" value="{{ person.height }}"></dd>
+	</dl>
+	<p><input type="submit" value="Submit" ></p>
+</form>

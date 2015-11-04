@@ -1,0 +1,16 @@
+{% extends "layouts/base.html" %}
+
+{# Setting blocks #}
+{% block setting_form_action %}/{% endblock %}
+
+{% block body %}
+<div id="wrapper">
+	<div id="header">
+		<h1>Nutelliweb</h1>
+	</div>
+	<div id="content">
+		{% include "parts/setting_form.html" %}
+	</div>
+	<div id="footer">Powerd by <a href="http://8arrow.org/caveman/">Caveman2</a></div>
+</div>
+{% endblock %}

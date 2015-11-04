@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+div#header h1
+{
+	font-size: 2em;
+	line-height: 1.5em;
+	margin: 0;
+	padding: 0;
+}
+
+div#header ul.nav
+{
+}
+
+div#header ul.nav li
+{
+}
+
+div#header ul.nav li a
+{
+}
