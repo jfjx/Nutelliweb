@@ -1,9 +1,9 @@
 ;;; Input
 ;; cake_snackcake_cremefilled_chocolatewithfrosting from: http://nutritiondata.self.com/facts/baked-products/4912/2
-;(:bag *cake_snackcake_cremefilled_chocolatewithfrosting *grilledchicken_vegetables_pastasoup *sandwich_beef_cheddar *milk_dry_whole *apple_raw_withoutskin)
+;(:bag *Cake *Grilled_Chicken_With_Vegetables *Sandwich *Milk *Apple)
 ;(available weight of food) = min of ((available weight of nutritions of daily taken nutritions of me))
 ;(daily needed nutrition) = 1/((NutritionWeight)/(servingSize))
-(*cake_snackcake_cremefilled_chocolatewithfrosting has
+(*Cake has
 	(instance-of (Food))
 	(weight ((a WeightValue with (num (500)) (unit (*Gram)))))
 	(servingSize ((a WeightValue with (num (50)) (unit (*Gram)))))
@@ -35,7 +35,7 @@
 	)
 
 ;; grilledchicken_vegetables_pastasoup from: http://nutritiondata.self.com/facts/soups-sauces-and-gravies/10101/2
-(*grilledchicken_vegetables_pastasoup has
+(*Grilled_Chicken_With_Vegetables has
 	(instance-of (Food))
 	(weight ((a WeightValue with (num (245)) (unit (*Gram)))))
 	(servingSize ((a WeightValue with (num (245)) (unit (*Gram)))))
@@ -55,7 +55,7 @@
 	)
 
 ;; sandwich_beef_cheddar from: http://nutritiondata.self.com/facts/foods-from-arbys/7846/2
-(*sandwich_beef_cheddar has
+(*Sandwich has
 	(instance-of (Food))
 	(weight ((a WeightValue with (num (195)) (unit (*Gram)))))
 	(servingSize ((a WeightValue with (num (195)) (unit (*Gram)))))
@@ -72,7 +72,7 @@
 	)
 
 ;; milk_dry_whole from: http://nutritiondata.self.com/facts/dairy-and-egg-products/82/2
-(*milk_dry_whole has
+(*Milk has
 	(instance-of (Food))
 	(weight ((a WeightValue with (num (128)) (unit (*Gram)))))
 	(servingSize ((a WeightValue with (num (128)) (unit (*Gram)))))
@@ -107,7 +107,7 @@
 	)
 
 ;; apple_raw_withoutskin from: http://nutritiondata.self.com/facts/fruits-and-fruit-juices/1810/2
-(*apple_raw_withoutskin has
+(*Apple has
 	(instance-of (Food))
 	(weight ((a WeightValue with (num (216)) (unit (*Gram)))))
 	(servingSize ((a WeightValue with (num (110)) (unit (*Gram)))))

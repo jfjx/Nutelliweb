@@ -1,5 +1,6 @@
 function Dishes()
 {
+	this.availableFoods = [];
 	this.removeEntry = function(entryHref)
 	{
 		$(entryHref).parents("tr").remove();
@@ -66,33 +67,14 @@ function Dishes()
 		
 		$("<div>", { "id": "hidden_div", "style": "display: block" }).appendTo('div#dishes');
 		
-		var availableTags = [
-		  "ActionScript",
-		  "AppleScript",
-		  "Asp",
-		  "BASIC",
-		  "C",
-		  "C++",
-		  "Clojure",
-		  "COBOL",
-		  "ColdFusion",
-		  "Erlang",
-		  "Fortran",
-		  "Groovy",
-		  "Haskell",
-		  "Java",
-		  "JavaScript",
-		  "Lisp",
-		  "Perl",
-		  "PHP",
-		  "Python",
-		  "Ruby",
-		  "Scala",
-		  "Scheme"
-		];
-		$( "input#dishes_input_name" ).autocomplete({
-			source: availableTags
+		$.getJSON( "/ajax/foodlist", function( data ) {
+			dishes.availableFoods = data;
+			
+			$( "input#dishes_input_name" ).autocomplete({
+				source: dishes.availableFoods
+			});
 		});
+		
 		
 		dishes.update();
 	}
