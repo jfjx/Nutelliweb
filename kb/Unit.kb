@@ -1,22 +1,22 @@
 #|  Unit class
 SIunit slot needs to be set as float to make it able to be  converted to float, not X/Y, on division.
 |#
-(every Unit has
+(Unit has
 ;       (terms ("unit"))
        (ratio ((must-be-a Number))))
+(HeightUnit has (superclasses (Unit)))
+(WeightUnit has (superclasses (Unit)))
+(VolumeUnit has (superclasses (Unit)))
+(EnergyUnit has (superclasses (Unit)))
 
 (every HeightUnit has
-       (superclasses (Unit))
        (SIunit ((*Meter))))
 (every WeightUnit has
-       (superclasses (Unit))
        (SIunit ((*Gram))))
 (every VolumeUnit has
-       (superclasses (Unit))
        (SIunit ((*MilliLiter))))
 (every EnergyUnit has
-       (superclasses (Unit))
-       (SIunit ((*Joule))))
+       (SIunit ((*KiloJoule))))
 
 ;; Height unit
 
@@ -119,19 +119,19 @@ SIunit slot needs to be set as float to make it able to be  converted to float, 
 
 (*Joule has
 	    (instance-of (EnergyUnit))
-	    (ratio (1.0))
+	    (ratio ((1.0 / 1000)))
 	    (text ((:seq "J"))))
 (*KiloJoule has
 	    (instance-of (EnergyUnit))
-	    (ratio (1000.0))
+	    (ratio (1.0))
 	    (text ((:seq "kJ"))))
 (*GramCalorie has
 	    (instance-of (EnergyUnit))
-	    (ratio ((the ratio of *ThermochemicalCalorie)))
+	    (ratio (((the ratio of *KiloCalorie) / 1000)))
 	    (text ((the text of *ThermochemicalCalorie))))
 (*KiloCalorie has
 	    (instance-of (EnergyUnit))
-	    (ratio (((the ratio of *GramCalorie) * 1000)))
+	    (ratio ((the ratio of *ThermochemicalCalorie)))
 	    (text ((:seq "kcal"))))
 (*ThermochemicalCalorie has
 	    (instance-of (EnergyUnit))

@@ -1,81 +1,88 @@
-;;; Nutrition Class
+#|	Nutrition Class
+	Nutrition weight is the weight per servingSize of entire food
+|#
 
-
-(every Nutrition has 
+(Nutrition has (superclasses (Thing)))
+(every Nutrition has
 	(energyPerGram ((a EnergyValue with (num (0)) (unit (*KiloJoule)))))
-	(weight ((a WeightValue with (num (0)) (unit (*Gram)))))
-)
+	(weight ((a WeightValue with (num (0)) (unit (*Gram))))) ; per servingSize
+	(calorie (((the SIvalue of (the weight of Self)) * (the SIvalue of (the energyPerGram of Self)) / (the ratio of *KiloCalorie)))))
 
-
+(energyPerGram has
+	       (instance-of (Slot))
+	       (domain (Nutrition))
+	       (range (EnergyValue))
+	       (cardinality (1-to-1))
+	       (inherit-with-overrides (t)))
+(weight has
+	       (instance-of (Slot))
+	       (domain (Nutrition))
+	       (range (WeightValue))
+	       (cardinality (1-to-1))
+	       (inherit-with-overrides (t)))
 ;;; -----------------------
 ;;; Subclasses of Nutrition
 ;;; -----------------------
 
+(Alcohol has
+ 	(superclasses (Nutrition)))
 (every Alcohol has
-	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (num (29)) (unit (*KiloJoule)))))
-) 
-	
+	(energyPerGram ((a EnergyValue with (num (29)) (unit (*KiloJoule))))))
+
 (Water has
-	(superclasses (Nutrition))
-)
+	(superclasses (Nutrition)))
 	
 (Ash has
-	(superclasses (Nutrition))
-)	
+	(superclasses (Nutrition)))
 
 (Caffeine has
-	(superclasses (Nutrition))
-)
+	(superclasses (Nutrition)))
 	
 (Theobromine has
-	(superclasses (Nutrition))
-)
-	
+	(superclasses (Nutrition)))
+
+(Protein has
+	 (superclasses (Nutrition)))
 (every Protein has
-	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (num (17)) (unit (*KiloJoule)))))
-)
+	(energyPerGram ((a EnergyValue with (num (17)) (unit (*KiloJoule))))))
 
 (Vitamin has
-	(superclasses (Nutrition))
-)
+	(superclasses (Nutrition)))
 	
 (Mineral has
-	(superclasses (Nutrition))
-)
+	(superclasses (Nutrition)))
 	
 (Sterol has
-	(superclasses (Nutrition))
-)
-	
+	(superclasses (Nutrition)))
+
+(Carbohydrate has
+	(superclasses (Nutrition)))
 (every Carbohydrate has
-	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (num (17)) (unit (*KiloJoule)))))
-)
-	
+	(energyPerGram ((a EnergyValue with (num (17)) (unit (*KiloJoule))))))
+
+(Fat has
+	(superclasses (Nutrition)))
 (every Fat has
-	(superclasses (Nutrition))
-	(energyPerGram ((a EnergyValue with (num (37)) (unit (*KiloJoule)))))
-)
+	(energyPerGram ((a EnergyValue with (num (37)) (unit (*KiloJoule))))))
 
 
 ;;; ---------------------
 ;;; Subclasses of Carbohydrate
 ;;; ---------------------
-
+(DietaryFiber has (superclasses (Carbohydrate)))
 (every DietaryFiber has
-	(superclasses (Carbohydrate))
 	(energyPerGram ((a EnergyValue with (num (8)) (unit (*KiloJoule)))))
 )
 
 (Starch has
-	(superclasses (Carbohydrate))
-)
+	(superclasses (Carbohydrate)))
+(every Starch has
+	(energyPerGram ((a EnergyValue with (num (17)) (unit (*KiloJoule))))))
 
 (Sugars has
-	(superclasses (Carbohydrate))
-)
+	(superclasses (Carbohydrate)))
+(every Sugars has
+       (energyPerGram ((a EnergyValue with (num (17)) (unit (*KiloJoule))))))
 
 
 ;;; ---------------------
@@ -83,60 +90,46 @@
 ;;; ---------------------
 
 (VitaminA has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (VitaminC has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (VitaminD has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (VitaminE has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (VitaminK has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (Thiamin has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (Riboflavin has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (Niacin has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (VitaminB6 has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (Folate has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (VitaminB12 has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (PantothenicAcid has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (Choline has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 (Betaine has
-	(superclasses (Vitamin))
-)
+	(superclasses (Vitamin)))
 
 
 ;;; ---------------------
@@ -144,84 +137,65 @@
 ;;; ---------------------
 
 (Calcium has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Iron has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Magnesium has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Phosphorus has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Poassium has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Sodium has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Zinc has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Copper has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Manganese has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Selenium has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 (Fluoride has
-	(superclasses (Mineral))
-)
+	(superclasses (Mineral)))
 
 ;;; -----------------
 ;;; Subclasses of Fat
 ;;; -----------------
 
 (SaturatedFat has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (MonounsaturatedFat has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (PolyunsaturatedFat has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (TransFattyAcid has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (TransMonoenoicFattyAcid has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (TransPolyenoicFattyAcid has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (Omega3FattyAcid has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 (Omega6FattyAcid has
-	(superclasses (Fat))
-)
+	(superclasses (Fat)))
 
 	
 ;;; --------------------
@@ -229,10 +203,7 @@
 ;;; --------------------
 
 (Cholesterol has
-	(superclasses (Sterol))
-)
+	(superclasses (Sterol)))
 
 (Phytosterol has
-	(superclasses (Sterol))
-)
-
+	(superclasses (Sterol)))

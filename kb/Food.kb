@@ -1,9 +1,11 @@
+(Food has (superclasses (Thing)))
 (every Food has
        (terms ("food" "menu" "dish"))
        (nutritions ((at-least 1 Nutrition)))
        (servingSize ((must-be-a WeightValue)))
        (weight ((must-be-a WeightValue)))
        (ingredients ((at-least 1 Food)))
+       (calorie (((the SIvalue of (the weight of Self)) * (the sum of (the bag of (the calorie of (the nutritions of Self)))) / (the SIvalue of (the servingSize of Self)))))
        (recipe ((a Seqence))))
 
 (nutritions has

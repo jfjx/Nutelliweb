@@ -51,5 +51,5 @@
 
 ;;(print (km-unique0 '#$(make-sentence (:seq "My daily nutrition status is" (the |daily taken nutrition| of *me) "nospace" "/" "nospace" (the |daily needed calorie| of *me)))))
 
-(print (km-unique0 '#$(make-sentence (:seq "My weight is" (the text of (the weight of *me)) "and height is" (the text of (the height of *me)) "thus the BMI=w/h^2=" "nospace" (the BMI of *me) "which means I'm" (the fatness of *me) "nospace" "-weight and need" ((the |daily needed calorie| of *me) / (the ratio of *KiloCalorie)) "nospace" "kcal per day"))))
+(print (km-unique0 '#$(make-sentence (:seq "My weight is" (the text of (the weight of *me)) "and height is" (the text of (the height of *me)) "thus the BMI=w/h^2=" "nospace" (the BMI of *me) "which means I'm" (the fatness of *me) "nospace" "-weight and need" (the |daily needed calorie| of *me) "nospace" "kcal per day"))))
 

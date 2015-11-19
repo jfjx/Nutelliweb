@@ -1,5 +1,6 @@
-;;; Person class
+o;;; Person class
 
+(Person has (superclasses (Thing)))
 (every Person has
        (terms ("person" "human" "Human"))
        (gender ((must-be-a Gender)))
@@ -8,24 +9,17 @@
        (height ((must-be-a HeightValue)))
        (|daily taken food| ((at-least 1 Food))) ;Set
        (|daily taken calorie| (
-       	       (the sum of
-	       	    (forall-bag
-		       	    (the bag of 
+              (the sum of (the bag of 
 	              	    	 (forall
-					(the nutritions of (the |daily taken food| of Self))
-	       		       	       	where ((0 < (the num of (the energyPerGram of It))))
-					It))
-			    ((the SIvalue of (the energyPerGram of It))				     ; nutrition E/g to (J/g)
-				* (the SIvalue of (the weight of (the nutritions-of of It)))	     ; food weight to (g)
-				* (the SIvalue of (the weight of It))		     	       	     ; nutrition weight to (g)
-				/ (the SIvalue of (the servingSize of (the nutritions-of of It)))    ; food serving size to (g)
-				/ (the ratio of *KiloCalorie))	    	 	       	  	     ; (J) to (kcal)
-			)
-		)
-	))
-       (|daily needed calorie| (((the SIvalue of (the |daily needed calorie seed| of Self)) + (((if ((the fatness of Self) = *Obese) then -500 else (if ((the fatness of Self) = *Muchover) then -250 else (if ((the fatness of Self) = *Under) then 500 else 0))) * (the ratio of *KiloCalorie))))))
-       
-       (BMI ((((the SIvalue of (the weight of Self)) / (the ratio of *KiloGram)) / (the SIvalue of (the height of Self)) ^ 2)))
+					(the |daily taken food| of Self)
+					(the calorie of It))))))
+       (|daily needed calorie| (((the SIvalue of (the |daily needed calorie seed| of Self)) * (
+       	       (if ((the fatness of Self) = *Obese) then 0.9 else
+	       (if ((the fatness of Self) = *Muchover) then 0.95 else
+	       (if ((the fatness of Self) = *Normal) then 1.05 else
+	       (if ((the fatness of Self) = *Under) then 1.1 else 1))))
+	       ) / (the ratio of *KiloCalorie))))
+       (BMI ((((the SIvalue of (the weight of Self)) / (the ratio of *KiloGram)) / ((the SIvalue of (the height of Self)) / (the ratio of *Meter)) ^ 2)))
        (fatness ((if ((the BMI of Self) >= 35) then *Obese else
        		 (if ((the BMI of Self) >= 30) then *Muchover else
 		 (if ((the BMI of Self) >= 25) then *Moreover else

@@ -4,27 +4,37 @@ Value class
 SIvalue slot converts any unit value to SI unit Number.
 SIvalue-made number needs to be divided with any other ratio to be converted to the unit.
 |#
+(Value has (superclasses (Thing)))
 
 (every Value has
        (num ((must-be-a Number)))
        (unit ((must-be-a Unit)))
        (text ((:seq (the num of Self) "nospace" (the text of (the unit of Self)))))
-       (SIvalue (((the ratio of (the unit of Self)) * (the num of Self))))
+       (SIvalue (((the ratio of (the unit of Self)) * (the num of Self) / (the ratio of (the SIunit of (the unit of Self))))))
        )
+(num has
+     (instance-of (Slot))
+     (domain (Value))
+     (range (Number))
+     (cardinality (1-to-1))
+     (inherit-with-overrides (t)))
+(unit has
+     (instance-of (Slot))
+     (domain (Value))
+     (range (Unit))
+     (cardinality (1-to-1))
+     (inherit-with-overrides (t)))
 
-(WeightValue has
-	     (superclasses (Value))
-	     (unit ((a WeightUnit)))
-	     )
+(WeightValue has (superclasses (Value)))
+(HeightValue has (superclasses (Value)))
+(VolumeValue has (superclasses (Value)))
+(EnergyValue has (superclasses (Value)))
+
+(every WeightValue has
+	     (unit ((a WeightUnit))))
 (HeightValue has
-	     (superclasses (Value))
-	     (unit ((a HeightUnit)))
-	     )
+	     (unit ((a HeightUnit))))
 (VolumeValue has
-	     (superclasses (Value))
-	     (unit ((a VolumeUnit)))
-	     )
+	     (unit ((a VolumeUnit))))
 (EnergyValue has
-	     (superclasses (Value))
-	     (unit ((a EnergyUnit)))
-	     )
+	     (unit ((a EnergyUnit))))

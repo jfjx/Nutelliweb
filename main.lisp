@@ -1,3 +1,7 @@
+;;; change current working directory
+(if (search "/t/" (sb-posix:getcwd))
+    (sb-posix:chdir ".."))
+
 ;Load dependencies
 (loop for lib in '(
    		   #P"lib/km-2-5-33.fasl" ; Compiled KM
