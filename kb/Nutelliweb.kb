@@ -3,3 +3,4 @@
 (load-kb "kb/Person.kb")
 (load-kb "kb/Food.kb")
 (load-kb "kb/Nutrition.kb")
+(load-kb "kb/example_food.kb")
