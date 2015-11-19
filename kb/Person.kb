@@ -7,6 +7,7 @@ o;;; Person class
        (age ((must-be-a Number)))
        (weight ((must-be-a WeightValue)))
        (height ((must-be-a HeightValue)))
+       (|daily taken water| ((the sum of (the bag of (the SIvalue of (the weight of (allof (the nutritions of (the |daily taken food| of Self)) where (It isa Water))))))))
        (|daily taken food| ((at-least 1 Food))) ;Set
        (|daily taken calorie| (
               (the sum of (the bag of 
