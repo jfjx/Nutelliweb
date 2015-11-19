@@ -6,7 +6,9 @@
        (weight ((must-be-a WeightValue)))
        (ingredients ((at-least 1 Food)))
        (calorie (((the SIvalue of (the weight of Self)) * (the sum of (the bag of (the calorie of (the nutritions of Self)))) / (the SIvalue of (the servingSize of Self)))))
-       (recipe ((a Seqence))))
+       (recipe ((a Seqence)))
+;       (available (((the min of (the bag of ())))))
+       )
 
 (nutritions has
 	    (instance-of (Slot))

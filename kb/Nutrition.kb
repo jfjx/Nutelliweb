@@ -6,7 +6,9 @@
 (every Nutrition has
 	(energyPerGram ((a EnergyValue with (num (0)) (unit (*KiloJoule)))))
 	(weight ((a WeightValue with (num (0)) (unit (*Gram))))) ; per servingSize
-	(calorie (((the SIvalue of (the weight of Self)) * (the SIvalue of (the energyPerGram of Self)) / (the ratio of *KiloCalorie)))))
+	(calorie (((the SIvalue of (the weight of Self)) * (the SIvalue of (the energyPerGram of Self)) / (the ratio of *KiloCalorie))))
+	(available (((the SIvalue of (the weight of (theoneof (the |daily needed nutritions| of *me) where (It isa (the classes of Self))))) - (the ratio of Self) * (the SIvalue of (the weight of (the nutritions-of of Self))))))
+	(ratio (((the SIvalue of (the weight of Self)) / (the SIvalue of (the servingSize of (the nutritions-of of Self)))))))
 
 (energyPerGram has
 	       (instance-of (Slot))

@@ -1,5 +1,5 @@
 ;;; change current working directory
-(if (search "/t/" (sb-posix:getcwd))
+(if (or (search "/t/" (sb-posix:getcwd)) (search "/kb/" (sb-posix:getcwd)))
     (sb-posix:chdir ".."))
 
 ;Load dependencies
@@ -22,3 +22,4 @@
 ;Load and start web server
 (asdf:operate 'asdf:load-op 'nutelliweb) ;load
 (nutelliweb:start :port 9099) ;start
+(asdf:run-shell-command "explorer http://localhost:9099") ;open webbrowser (for windows only)

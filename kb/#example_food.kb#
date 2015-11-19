@@ -1,8 +1,9 @@
 ;;; Input
 ;; cake_snackcake_cremefilled_chocolatewithfrosting from: http://nutritiondata.self.com/facts/baked-products/4912/2
 ;(:bag *cake_snackcake_cremefilled_chocolatewithfrosting *grilledchicken_vegetables_pastasoup *sandwich_beef_cheddar *milk_dry_whole *apple_raw_withoutskin)
-;(available weight of food) = min of ((available weight of nutritions of daily taken nutritions of me))
-;(daily needed nutrition) = 1/((NutritionWeight)/(servingSize))
+;(available weight of food) = min of ((available weight of food of  daily taken nutritions of me))
+;(available weight of nutrition) = (daily needed weight of nutrition) - (daily taken weight of nutrition)
+;(daily needed nutrition) = 
 (*cake_snackcake_cremefilled_chocolatewithfrosting has
 	(instance-of (Food))
 	(weight ((a WeightValue with (num (500)) (unit (*Gram)))))
