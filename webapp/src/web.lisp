@@ -144,7 +144,6 @@
 	
 ;; Foods
 (defroute ("/ajax/foodlist" :method :GET) ()
-	(setq *package* *KM-PACKAGE*)
 	(render-json (km-unique0 '#$(the all-instances of Food))))
 	;;(format nil "~S" (km0 '#$(the all-instances of Food)))))
 	
@@ -155,7 +154,7 @@
 	;;(format nil "~S" (list "person" (cdr(assoc "person" _parsed :test #'string=))))
 	;;(render #P"front.html" '( person ( ("name" . "test") ("gender" . "male") ("age" . "1") ("weight" . "2") ("height" . "3") ) )))
 
-	
+
 ;; Error pages
 
 (defmethod on-exception ((app <web>) (code (eql 404)))
