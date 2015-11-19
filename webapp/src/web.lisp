@@ -6,12 +6,9 @@
         :nutelliweb.view
         :nutelliweb.db
         :datafly
-        :sxql
-		:nutelliweb)
+        :sxql)
   (:export :*web*))
 (in-package :nutelliweb.web)
-
-;(load "lib/km-2-5-33.fasl")
 
 ;; for @route annotation
 (syntax:use-syntax :annot)
@@ -144,7 +141,7 @@
 	
 ;; Foods
 (defroute ("/ajax/foodlist" :method :GET) ()
-	(render-json (km-unique0 '#$(the all-instances of Food))))
+	(render-json (cl-user::km0 '#$(the all-instances of Food))))
 	;;(format nil "~S" (km0 '#$(the all-instances of Food)))))
 	
 ;;(defroute ("/" :method :POST) (&key _parsed)
