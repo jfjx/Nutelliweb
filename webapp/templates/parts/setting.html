@@ -4,12 +4,12 @@
 {# Setting blocks #}
 {% block setting_form_action %}/setting/submit{% endblock %}
 
+{% block additional-scripts %}
+	<script src="/js/nutelliweb.setting.form.js"></script>
+{% endblock %}
+
 {% block content %}
 <div id="content">
-
-	<div class="setting">
-		{% include "parts/setting_form.html" %}
-	</div>
-
+	{% include "parts/setting_form.html" %}
 </div>
 {% endblock %}

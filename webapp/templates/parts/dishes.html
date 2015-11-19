@@ -1,0 +1,45 @@
+<script src="/js/nutelliweb.dishes.js"></script>
+<div id="dishes" class="col-sm-12">
+	<h2>Dishes you had</h2>
+	<div style="text-align: right"><a href="#" class="reset">Reset</a></div>
+	
+	<form id="dishes_add_form" class="form-inline" action="/ajax/dishes" method="post">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="name">Name</th>
+					<th class="amount">Amount</th>
+					<th class="tools"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="name">Chicken</td>
+					<td class="amount"><span class="amount">10</span> <span class="unit">kg</span></td>
+					<td class="tools"><a href="javascript: dishes.removeEntry(this);">Remove</a></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td class="name">
+						<label class="sr-only" for="dishes_input_name">Name</label>
+						<input id="dishes_input_name" class="form-control" type="text" name="dishes[][name]" placeholder="Name" style="width: 100%;">
+					</td>
+					<td class="amount">
+						<label class="sr-only" for="dishes_input_amount">Amount</label>
+						<input id="dishes_input_amount" class="form-control" type="text" name="dishes[][amount]" placeholder="Amount" style="width: 40%;">
+						<select class="form-control" name="dishes[][unit]" style="width: 40%;">
+							<option>g</option>
+							<option>mg</option>
+							<option>kg</option>
+							<option>mcg</option>
+						</select>
+					</td>
+					<td class="tools">
+						<input class="btn btn-default" type="submit" value="Add" />
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</form>
+</div>

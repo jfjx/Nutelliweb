@@ -1,11 +1,15 @@
 {% extends "layouts/default.html" %}
 {% block title %}NutelliWeb{% endblock %}
+
+{% block additional-scripts %}
+	<script src="/js/nutelliweb.dashboard.js"></script>
+{% endblock %}
+
 {% block content %}
-<div id="content">
-
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum elit sit amet interdum interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel faucibus nulla. Phasellus ullamcorper quam ut finibus lacinia. Maecenas condimentum metus a dui malesuada rhoncus. Vivamus semper eros ut massa placerat dictum. Fusce sed risus quis odio tempor facilisis sed eu felis. Quisque venenatis semper magna ultricies lacinia. Aliquam vehicula erat sit amet dolor imperdiet porttitor. Etiam ut volutpat velit, feugiat gravida velit. Integer ut turpis eros. Donec eu dolor nec massa mattis laoreet. Vivamus vel lacinia arcu. Pellentesque at gravida quam, ac tempus magna. Proin pretium lectus sit amet lorem gravida tristique.</p>
-
-	<p>Duis non felis sed velit auctor fringilla. Nunc vestibulum vel massa non interdum. Nulla facilisi. Donec dignissim blandit aliquam. Etiam non justo eu mi efficitur tempus id quis nibh. Donec a semper ex. Aenean et orci purus. Sed viverra sem a nisl suscipit mollis. Ut non elementum nunc. Nulla gravida ante nec nisl lobortis laoreet. Etiam sodales risus nulla, vel ullamcorper lectus aliquam ac.</p>
-
+<div class="row">
+	{% include "parts/dishes.html" %}
+</div>
+<div class="row">
+	{% include "parts/nutrient.html" %}
 </div>
 {% endblock %}
