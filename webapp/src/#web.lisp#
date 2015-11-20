@@ -66,9 +66,9 @@
 		(progn
 		  (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
 		  (cl-user::km0 '#$(*me has (instance-of (Person))))
-		  (if (string= "male" (cdr (assoc "gender" _parsed :test #'string=)))
-		      (cl-user::km0 '#$(*me has (gender *Male)))
-		      (cl-user::km0 '#$(*me has (gender *Female))))
+		  (cl-user::km0 (append '#$(*me has) (if (string= "male" (cdr (assoc "gender" _parsed :test #'string=)))
+							 '#$((gender *Male))
+							 '#$((gender *Female)))))
 		  (render-json (gethash :person *session*))
 		)
 		(throw-code 403)))
