@@ -8,10 +8,11 @@ o;;; Person class
        (weight ((must-be-a WeightValue)))
        (height ((must-be-a HeightValue)))
        (|daily taken water| ((the sum of (the bag of (the SIvalue of (the weight of (allof (the |daily taken nutritions| of Self) where (It isa Water))))))))
-       (|taken nutritions| ((forall ?x in (the |daily needed nutritions| of Self) (
-       	       (?s == (the sum of (the bag of (forall (the |daily taken nutritions| of Self) where (It isa (the classes of ?x)) (the SIvalue of (the weight of It))))))
-	       and (if ((has-value ?s)) then ?s else 0))
-       )))
+;       (|taken nutritions| ((forall ?x in (the |daily needed nutritions| of Self) (
+;       	       (?s == (the sum of (the bag of (forall (the |daily taken nutritions| of Self) where (It isa (the classes of ?x)) (the SIvalue of (the weight of It))))))
+;	       and (if ((has-value ?s)) then ?s else 0))
+;       )))
+	(|taken nutritions| ((forall ?f in (the |daily taken food| of Self) (forall ?n in (the nutritions of ?f) (:pair (make-phrase (the classes of ?n)) ((the SIvalue of (the weight of ?f)) * (the ratio of ?n)))))))
        (|daily taken food| ((at-least 1 Food))) ;Set
        (|daily taken calorie| (
               (the sum of (the bag of 
