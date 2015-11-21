@@ -24,5 +24,5 @@
 (nutelliweb:start :port 9099) ;start
 
 (sb-thread::make-thread (lambda () (progn
-			  (sleep 3)
+			  (sleep 1)
 			  (asdf:run-shell-command "explorer http://localhost:9099")))) ;open webbrowser (for windows only)
