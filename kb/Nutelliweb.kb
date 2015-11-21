@@ -1,3 +1,8 @@
+(untrace)
+(nocomments)
+(SETQ *OUTPUT-PRECISION* NIL) ;remove rounding up of floating points
+(unload-kb)
+
 (load-kb "kb/Value.kb")
 (load-kb "kb/Unit.kb")
 (load-kb "kb/Person.kb")

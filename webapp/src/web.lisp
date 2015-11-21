@@ -48,9 +48,17 @@
 
 ;; User
 (defroute ("/user" :method :POST) (&key _parsed)
-	(setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
-	(render #P"redirect.html" '(("url" . "/dashboard"))))
-	
+  (progn
+    (cl-user::km0
+     (append '#$(*me has (instance-of (Person)))
+	     (if (string= "male" (cdr (assoc "gender" (cdar _parsed) :test #'string=)))
+		 '#$((gender (*Male)))
+		 '#$((gender (*Female))))
+	     (list (append '#$(age) (list (list (parse-integer (cdr (assoc "age" (cdar _parsed) :test #'string=)))))))
+	     ))
+    (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=))))
+   (render #P"redirect.html" '(("url" . "/dashboard"))))
+
 (defroute ("/ajax/user" :method :GET) ()
 	(if (gethash :person *session*)
 		(render-json (gethash :person *session*))
@@ -65,10 +73,6 @@
 	(if (gethash :person *session*)
 		(progn
 		  (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
-		  (cl-user::km0 '#$(*me has (instance-of (Person))))
-		  (if (string= "male" (cdr (assoc "gender" _parsed :test #'string=)))
-		      (cl-user::km0 '#$(*me has (gender *Male)))
-		      (cl-user::km0 '#$(*me has (gender *Female))))
 		  (render-json (gethash :person *session*))
 		)
 		(throw-code 403)))
@@ -132,17 +136,13 @@
 (defroute ("/ajax/nutrition" :method :GET) ()
 	(if (gethash :person *session*)
 		(progn
-			(cl-user::km0 '#$(*me has (instance-of (Person))))
-			(if (string= "male" (cdr (assoc "gender" (gethash :person *session*) :test #'string=)))
-				(cl-user::km0 '#$(*me has (gender (*Male))))
-				(cl-user::km0 '#$(*me has (gender (*Female)))))
-			(cl-user::km0 (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "age" (gethash :person *session*) :test #'string=)))))))))
-			(cl-user::km0 (append '#$(*me has) (list(append '#$(weight) (list(list(parse-integer(cdr(assoc "weight" (gethash :person *session*) :test #'string=)))))))))
-			(cl-user::km0 (append '#$(*me has) (list(append '#$(height) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
+;			(cl-user::km0 (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "age" (gethash :person *session*) :test #'string=)))))))))
+;			(cl-user::km0 (append '#$(*me has) (list(append '#$(weight) (list(list(parse-integer(cdr(assoc "weight" (gethash :person *session*) :test #'string=)))))))))
+;			(cl-user::km0 (append '#$(*me has) (list(append '#$(height) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
 			;(cl-user::km0 '#$(make-sentence (:seq "My daily calorie status is" ((the |daily taken calorie| of *me) / (the |daily needed calorie| of *me) * 100) "nospace" "%"))))
 			;;(render-json (gethash :person *session*))
 			;(render-json (assoc "height" (gethash :person *session*) :test #'string=))
-			(format nil "~S" (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
+;			(format nil "~S" (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
 			
 		)
 		(throw-code 403)
