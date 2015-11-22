@@ -53,10 +53,10 @@
     (rplaca (cadr (pop p)) (if (string= "male" (cdr (assoc "gender" (cdar _parsed) :test #'string=)))
 			       '#$*Male '#$*Female)) ; pop makes step next = age
     (rplaca (cadr (pop p)) (parse-integer (cdr (assoc "age" (cdar _parsed) :test #'string=))))
-    (setq c (nthcdr 3 (caadr (pop p))))
+    (setq c (nthcdr 3 (caadr (pop p)))) ; skip "a WeightValue with"
     (rplaca (cadr (pop c)) (parse-integer (cdr (assoc "weight" (cdar _parsed) :test #'string=))))
     (rplaca (cadr (pop c)) '#$*KiloGram)
-    (setq c (nthcdr 3 (caadr (pop p))))
+    (setq c (nthcdr 3 (caadr (pop p)))) ; skip "a HeightValue with"
     (rplaca (cadr (pop c)) (parse-integer (cdr (assoc "height" (cdar _parsed) :test #'string=))))
     (rplaca (cadr (pop c)) '#$*CentiMeter)
     (print q) ; for debug
