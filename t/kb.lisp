@@ -1,8 +1,5 @@
 ;;; Init
 (load "lib/km-2-5-33.fasl")
-(km '(untrace))
-(km0 '(SETQ *OUTPUT-PRECISION* NIL)) ;remove rounding up of floating points
-(km0 '(unload-kb))
 (km0 '(load-kb "kb/Nutelliweb.kb")) ;load a chemical nutrition kb
 
 ;;; Input

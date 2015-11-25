@@ -48,9 +48,22 @@
 
 ;; User
 (defroute ("/user" :method :POST) (&key _parsed)
-	(setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
-	(render #P"redirect.html" '(("url" . "/dashboard"))))
-	
+  (let ((q '#$(*me has (instance-of (Person)) (gender (*Male)) (age (27)) (weight ((a WeightValue with (num (70)) (unit (*KiloGram))))) (height ((a HeightValue with (num (170)) (unit (*CentiMeter))))))) (p nil) (c nil)) ; q:KM command seed
+    (setq p (nthcdr 3 q)) ;p: 3rd cdr = gender
+    (rplaca (cadr (pop p)) (if (string= "male" (cdr (assoc "gender" (cdar _parsed) :test #'string=)))
+			       '#$*Male '#$*Female)) ; pop makes step next = age
+    (rplaca (cadr (pop p)) (parse-integer (cdr (assoc "age" (cdar _parsed) :test #'string=))))
+    (setq c (nthcdr 3 (caadr (pop p)))) ; skip "a WeightValue with"
+    (rplaca (cadr (pop c)) (parse-integer (cdr (assoc "weight" (cdar _parsed) :test #'string=))))
+    (rplaca (cadr (pop c)) '#$*KiloGram)
+    (setq c (nthcdr 3 (caadr (pop p)))) ; skip "a HeightValue with"
+    (rplaca (cadr (pop c)) (parse-integer (cdr (assoc "height" (cdar _parsed) :test #'string=))))
+    (rplaca (cadr (pop c)) '#$*CentiMeter)
+    (print q) ; for debug
+    (cl-user::km0 q) ; apply to KM
+    (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=))))
+   (render #P"redirect.html" '(("url" . "/dashboard"))))
+
 (defroute ("/ajax/user" :method :GET) ()
 	(if (gethash :person *session*)
 		(render-json (gethash :person *session*))
@@ -64,8 +77,8 @@
 (defroute ("/ajax/user" :method :PUT) (&key _parsed)
 	(if (gethash :person *session*)
 		(progn
-			(setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
-			(render-json (gethash :person *session*))
+		  (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
+		  (render-json (gethash :person *session*))
 		)
 		(throw-code 403)))
 
@@ -97,9 +110,9 @@
 
 (defroute ("/ajax/dishes" :method :POST) (&key _parsed)
 	(if (gethash :person *session*)
-		(progn
-			(setf (gethash :dishes *session*) (append (gethash :dishes *session*) (cdr (assoc "dishes" _parsed :test #'string=))))
-			(render-json (gethash :dishes *session*))
+	    (progn
+	      (setf (gethash :dishes *session*) (append (gethash :dishes *session*) (cdr (assoc "dishes" _parsed :test #'string=))))
+	      (render-json (gethash :dishes *session*))
 			;;(format nil "~S" (gethash :dishes *session*))
 		)
 		(throw-code 403)
@@ -128,17 +141,13 @@
 (defroute ("/ajax/nutrition" :method :GET) ()
 	(if (gethash :person *session*)
 		(progn
-			(cl-user::km0 '#$(*me has (instance-of (Person))))
-			(if (string= "male" (cdr (assoc "gender" (gethash :person *session*) :test #'string=)))
-				(cl-user::km0 '#$(*me has (gender (*Male))))
-				(cl-user::km0 '#$(*me has (gender (*Female)))))
-			(cl-user::km0 (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "age" (gethash :person *session*) :test #'string=)))))))))
-			(cl-user::km0 (append '#$(*me has) (list(append '#$(weight) (list(list(parse-integer(cdr(assoc "weight" (gethash :person *session*) :test #'string=)))))))))
-			(cl-user::km0 (append '#$(*me has) (list(append '#$(height) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
+;			(cl-user::km0 (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "age" (gethash :person *session*) :test #'string=)))))))))
+;			(cl-user::km0 (append '#$(*me has) (list(append '#$(weight) (list(list(parse-integer(cdr(assoc "weight" (gethash :person *session*) :test #'string=)))))))))
+;			(cl-user::km0 (append '#$(*me has) (list(append '#$(height) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
 			;(cl-user::km0 '#$(make-sentence (:seq "My daily calorie status is" ((the |daily taken calorie| of *me) / (the |daily needed calorie| of *me) * 100) "nospace" "%"))))
 			;;(render-json (gethash :person *session*))
 			;(render-json (assoc "height" (gethash :person *session*) :test #'string=))
-			(format nil "~S" (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
+;			(format nil "~S" (append '#$(*me has) (list(append '#$(age) (list(list(parse-integer(cdr(assoc "height" (gethash :person *session*) :test #'string=)))))))))
 			
 		)
 		(throw-code 403)
