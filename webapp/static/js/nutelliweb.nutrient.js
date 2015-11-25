@@ -1,8 +1,36 @@
 function Nutrient()
 {
+	
 	this.myChart;
 	this.chartData = {
-		labels: ["January", "February", "March", "April", "May", "June", "July"],
+		labels: ["Fat", 
+			"Omega6FattyAcid", 
+			"Omega3Fatty", 
+			"Protein", 
+			"Water", 
+			"VitaminA", 
+			"VitaminD", 
+			"VitaminE", 
+			"VitaminK", 
+			"VitaminC", 
+			"Thiamin", 
+			"Riboflavin", 
+			"Niacin", 
+			"VitaminB6", 
+			"Folate", 
+			"VitaminB12", 
+			"Pantothenic", 
+			"Calcium", 
+			"Phosphorus", 
+			"Sodium", 
+			"Potassium", 
+			"Magnesium", 
+			"Iron", 
+			"Zinc", 
+			"Copper", 
+			"Fluoride", 
+			"Manganese", 
+			"Seleniu"],
 		datasets: [
 			{
 				label: "My First dataset",
