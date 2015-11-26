@@ -1,8 +1,11 @@
 @charset "UTF-8";
 
-form#dishes_add_form table
-{
-}
+/**************
+ * Front Page *
+ **************/
+
+div#content.front p.submit { text-align: right; }
+
 
 form#dishes_add_form table .name { width: 70%; }
 form#dishes_add_form table .amount { width: 20%;}

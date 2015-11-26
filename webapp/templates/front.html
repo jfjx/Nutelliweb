@@ -1,2 +1,61 @@
 {% extends "layouts/front.html" %}
 
+{% block content %}
+<div class="setting">
+	<form action="/user" method="post" class="form-horizontal">
+		<div class="form-group">
+			<label for="setting_input_name" class="col-sm-2 control-label">Name</label>
+			<div class="col-sm-10">
+				<input id="setting_input_name" class="form-control" name="person[name]" type="text" value="{{ person.name }}">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="radio">
+					<label><input type="radio" name="person[gender]" value="male" {% ifequal person.gender "male" %}checked{% endifequal %}>Male</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="person[gender]" value="female" {% ifequal person.gender "female" %}checked{% endifequal %}>Female</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">		
+			<label for="setting_input_age" class="col-sm-2 control-label">Age</label>
+			<div class="col-sm-10">
+				<input id="setting_input_age" class="form-control" name="person[age]" type="text" value="{{ person.age }}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="setting_input_weight" class="col-sm-2 control-label">Weight</label>
+			<div class="col-sm-8">
+				<input id="setting_input_weight" class="form-control" name="person[weight]" type="text" value="{{ person.weight }}">
+			</div>
+			<div class="col-sm-2">
+				<select class="form-control" name="person[weight_unit]">
+					<option value="KiloGram">kg</option>
+					<option value="Gram">g</option>
+					<option value="MilliGram">mg</option>
+					<option value="MicroGram">mcg</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="setting_input_height" class="col-sm-2 control-label">Height</label>
+			<div class="col-sm-8">
+				<input id="setting_input_height" class="form-control" name="person[height]" type="text" value="{{ person.height }}">
+			</div>
+			<div class="col-sm-2">
+				<select class="form-control" name="person[height_unit]">
+					<option value="CentiMeter">cm</option>
+					<option value="Inch">in</option>
+					<option value="Feet">ft</option>
+					<option value="Meter">m</option>
+					<option value="MilliMeter">mm</option>
+					<option value="Yard">yd</option>
+				</select>
+			</div>
+		</div>
+		<p class="submit"><input class="btn btn-default" type="submit" value="Submit"></p>
+	</form>
+</div>
+{% endblock %}

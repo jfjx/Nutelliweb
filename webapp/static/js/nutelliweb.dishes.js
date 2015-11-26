@@ -65,7 +65,7 @@ function Dishes()
 			return false;
 		});
 		
-		$("<div>", { "id": "hidden_div", "style": "display: block" }).appendTo('div#dishes');
+		$("<div>", { "id": "hidden_div", "style": "display: none" }).appendTo('div#dishes');
 		
 		$.getJSON( "/ajax/foodlist", function( data ) {
 			dishes.availableFoods = data;
