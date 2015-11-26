@@ -46,7 +46,7 @@
 	(unless (gethash :person *session*) (throw-code 403))
 	(render #P"dashboard.html" ))
 
-;; User
+;; User ;#1 : destructive replace example
 (defroute ("/user" :method :POST) (&key _parsed)
   (let ((q '#$(*me has (instance-of (Person)) (gender (*Male)) (age (27)) (weight ((a WeightValue with (num (70)) (unit (*KiloGram))))) (height ((a HeightValue with (num (170)) (unit (*CentiMeter))))))) (p nil) (c nil)) ; q:KM command seed
     (setq p (nthcdr 3 q)) ;p: 3rd cdr = gender
@@ -107,7 +107,7 @@
 		(render-json (gethash :dishes *session*))
 		(throw-code 403)
 	))
-
+;; #2 : recursive replace example
 (defun recursive-replace (i l)
   (mapcar #'(lambda (x) (if (eq x T) (pop (car l)) (if (listp x) (recursive-replace x l) x))) i))
 
