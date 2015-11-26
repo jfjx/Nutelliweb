@@ -61,15 +61,15 @@
     (rplaca (cadr (pop c)) '#$*CentiMeter)
     (print q) ; for debug
     (cl-user::km0 q) ; apply to KM
-    (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=))))
-   (render #P"redirect.html" '(("url" . "/dashboard"))))
+    (setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
+    (render #P"redirect.html" '(("url" . "/dashboard")))))
 
 (defroute ("/ajax/user" :method :GET) ()
 	(if (gethash :person *session*)
 		(render-json (gethash :person *session*))
 		(throw-code 403)
 	))
-	
+
 (defroute ("/ajax/user" :method :POST) (&key _parsed)
 	(setf (gethash :person *session*) (cdr (assoc "person" _parsed :test #'string=)))
 	(render-json (gethash :person *session*)))
@@ -108,15 +108,26 @@
 		(throw-code 403)
 	))
 
+(defun recursive-replace (i l)
+  (mapcar #'(lambda (x) (if (eq x T) (pop (car l)) (if (listp x) (recursive-replace x l) x))) i))
+
 (defroute ("/ajax/dishes" :method :POST) (&key _parsed)
-	(if (gethash :person *session*)
-	    (progn
-	      (setf (gethash :dishes *session*) (append (gethash :dishes *session*) (cdr (assoc "dishes" _parsed :test #'string=))))
-	      (render-json (gethash :dishes *session*))
-			;;(format nil "~S" (gethash :dishes *session*))
-		)
-		(throw-code 403)
-	))
+  (if (gethash :person *session*)
+      (let ((a '#$(a Food with (nutritions ((the nutritions of T))) (weight ((a WeightValue with (num (T)) (unit (T)))))))) ; q:KM command seed
+	(setq a (recursive-replace a (list (list
+				    (intern (concatenate 'string "*" (cdr (assoc "name" (cadar _parsed) :test #'string=))))
+				    (parse-integer (cdr (assoc "amount" (cadar _parsed) :test #'string=)))
+				    (let ((s (cdr (assoc "unit" (cadar _parsed) :test #'string=))))
+				      (cond ((string= s "mg") '#$*MilliGram)
+					    ((string= s "mcg") '#$*MicroGram)
+					    ((string= s "kg") '#$*KiloGram)
+					    (T '#$*Gram))) ))))
+	(print a) ; for debug
+	(cl-user::km-unique0 a) ; apply to KM, return=new food instance symbol
+	(setf (gethash :dishes *session*) (append (gethash :dishes *session*) (cdr (assoc "dishes" _parsed :test #'string=))))
+	(render-json (gethash :dishes *session*)))
+      (throw-code 403)
+      ))
 
 (defroute ("/ajax/dishes" :method :PUT) (&key _parsed)
 	(if (gethash :person *session*)
