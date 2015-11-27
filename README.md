@@ -12,9 +12,9 @@ Run `start.bat`
 
 ### Mainly checkable sources
   * Windows One-click startup
-    * [Windows One-click startup script] (blob/master/start.bat)
-    * [One-click startup lisp script] (blob/master/main.lisp)
+    * [Windows One-click startup script] (start.bat)
+    * [One-click startup lisp script] (main.lisp)
   * KM
-    * [KM test file](blob/master/t/kb.lisp)
+    * [KM test file](t/kb.lisp)
   * Web
-    * [Web controller](blob/master/webapp/src/web.lisp)
+    * [Web controller](webapp/src/web.lisp)
