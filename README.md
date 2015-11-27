@@ -1,4 +1,5 @@
 # NutelliWeb
+Lisp based daily nutrition intake trace KM connected with local web framework ([Caveman 2](http://8arrow.org/caveman/))
 
 ### One-click startup on Windows
 Run `start.bat`
@@ -12,9 +13,12 @@ Run `start.bat`
 
 ### Mainly checkable sources
   * Windows One-click startup
-    * [Windows One-click startup script] (start.bat)
     * [One-click startup lisp script] (main.lisp)
   * KM
     * [KM test file](t/kb.lisp)
   * Web
     * [Web controller](webapp/src/web.lisp)
+
+### REST-KM Controller example
+  * [Example #1 : destructive replace](webapp/src/web.lisp#L49]
+  * [Example #2 : recursive replace](webapp/src/web.lisp#L110)
