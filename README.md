@@ -1,5 +1,5 @@
 # NutelliWeb
-Lisp based daily nutrition intake trace KM connected with local web framework ([Caveman 2](http://8arrow.org/caveman/))
+Lisp based daily nutrition intake trace [KM](http://www.cs.utexas.edu/users/mfkb/km.html) connected with local web framework ([Caveman 2](http://8arrow.org/caveman/))
 
 ### One-click startup on Windows
 Run `start.bat`
