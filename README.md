@@ -20,5 +20,5 @@ Run `start.bat`
     * [Web controller](webapp/src/web.lisp)
 
 ### REST-KM Controller example
-  * [Example #1 : destructive replace](webapp/src/web.lisp#L49]
+  * [Example #1 : destructive replace](webapp/src/web.lisp#L49)
   * [Example #2 : recursive replace](webapp/src/web.lisp#L110)
