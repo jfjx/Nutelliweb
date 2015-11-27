@@ -9,6 +9,9 @@ Run `start.bat`
     * [openssl.light](https://chocolatey.org/packages/openssl.light)
     * [mingw](https://chocolatey.org/packages/mingw)
     * [sbcl](https://chocolatey.org/packages/sbcl)
+```
+cinst -y openssl.light mingw sbcl
+```
   * [Quicklisp](https://www.quicklisp.org/beta/)
 
 ### Mainly checkable sources
