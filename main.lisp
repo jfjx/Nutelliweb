@@ -25,4 +25,4 @@
 
 (sb-thread::make-thread (lambda () (progn
 			  (sleep 1)
-			  (asdf:run-shell-command "explorer http://localhost:9099")))) ;open webbrowser (for windows only)
+			  (uiop:run-program "explorer http://localhost:9099")))) ;open webbrowser (for windows only)
